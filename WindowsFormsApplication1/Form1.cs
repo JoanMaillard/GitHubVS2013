@@ -11,6 +11,7 @@ namespace WindowsFormsApplication1
 {
     public partial class Calculatorr : Form
     {
+        Boolean flag1 = false;
         public Calculatorr()
         {
             InitializeComponent();
@@ -24,6 +25,17 @@ namespace WindowsFormsApplication1
         private void button_click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
+            //display from lblResult to lblPreviousCalc after an operation 
+            //when another button is pressed, and after erase if needed
+            if (flag1 == true)
+            {
+                if(lblPreviousCalc.Text!="")
+                { lblPreviousCalc.Text = ""; }
+                lblPreviousCalc.Text = lblResult.Text;
+                lblResult.Text = "0";
+                flag1 = false;
+            }
+            //Notation "0.xx" for numbers below 1, instead of ".xx"
             if (lblResult.Text == "0")
                 if (button.Text!=".")
                     lblResult.Text="";
@@ -37,7 +49,7 @@ namespace WindowsFormsApplication1
 
         private void cmdEqual_click(object sender, EventArgs e)
         {
-
+            flag1 = true;
         }
     
     }
