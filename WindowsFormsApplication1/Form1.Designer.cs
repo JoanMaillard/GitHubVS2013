@@ -183,7 +183,7 @@
             this.lblResult.Size = new System.Drawing.Size(238, 27);
             this.lblResult.TabIndex = 9;
             this.lblResult.Text = "0";
-            this.lblResult.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.lblResult.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // cmdPlus
             // 
@@ -238,7 +238,7 @@
             this.lblPower.Name = "lblPower";
             this.lblPower.Size = new System.Drawing.Size(126, 28);
             this.lblPower.TabIndex = 14;
-            this.lblPower.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.lblPower.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblPreviousCalc
             // 
@@ -249,7 +249,7 @@
             this.lblPreviousCalc.Name = "lblPreviousCalc";
             this.lblPreviousCalc.Size = new System.Drawing.Size(361, 27);
             this.lblPreviousCalc.TabIndex = 15;
-            this.lblPreviousCalc.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.lblPreviousCalc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // menuStrip1
             // 
@@ -371,18 +371,21 @@
             this.sin1ToolStripMenuItem.Name = "sin1ToolStripMenuItem";
             this.sin1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.sin1ToolStripMenuItem.Text = "sin^(-1)(";
+            this.sin1ToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemSpecialSin_Click);
             // 
             // cos1ToolStripMenuItem
             // 
             this.cos1ToolStripMenuItem.Name = "cos1ToolStripMenuItem";
             this.cos1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cos1ToolStripMenuItem.Text = "cos^(-1)(";
+            this.cos1ToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemSpecialCos_Click);
             // 
             // cotToolStripMenuItem
             // 
             this.cotToolStripMenuItem.Name = "cotToolStripMenuItem";
             this.cotToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cotToolStripMenuItem.Text = "cot(";
+            this.cotToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemSpecialCot_Click);
             // 
             // cmd0
             // 
@@ -526,6 +529,11 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void ToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            throw new System.NotImplementedException();
         }
 
         #endregion
