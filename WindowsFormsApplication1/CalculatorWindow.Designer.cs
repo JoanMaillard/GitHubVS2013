@@ -278,7 +278,7 @@
             this.normalToolStripMenuItem,
             this.converterToolStripMenuItem});
             this.modeToolStripMenuItem.Name = "modeToolStripMenuItem";
-            this.modeToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.modeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.modeToolStripMenuItem.Text = "&Mode";
             // 
             // mnuModeScientific
@@ -335,7 +335,7 @@
             this.engineerToolStripMenuItem,
             this.decimalToolStripMenuItem});
             this.writingToolStripMenuItem.Name = "writingToolStripMenuItem";
-            this.writingToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.writingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.writingToolStripMenuItem.Text = "Writing";
             // 
             // scientificToolStripMenuItem1
@@ -370,22 +370,25 @@
             // 
             this.sin1ToolStripMenuItem.Name = "sin1ToolStripMenuItem";
             this.sin1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.sin1ToolStripMenuItem.Text = "sin^(-1)(";
-            this.sin1ToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemSpecialSin_Click);
+            this.sin1ToolStripMenuItem.Tag = "sin^(-1)(";
+            this.sin1ToolStripMenuItem.Text = "sin^-1";
+            this.sin1ToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemSpecial_Click);
             // 
             // cos1ToolStripMenuItem
             // 
             this.cos1ToolStripMenuItem.Name = "cos1ToolStripMenuItem";
             this.cos1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.cos1ToolStripMenuItem.Text = "cos^(-1)(";
-            this.cos1ToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemSpecialCos_Click);
+            this.cos1ToolStripMenuItem.Tag = "cos^(-1)(";
+            this.cos1ToolStripMenuItem.Text = "cos^-1";
+            this.cos1ToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemSpecial_Click);
             // 
             // cotToolStripMenuItem
             // 
             this.cotToolStripMenuItem.Name = "cotToolStripMenuItem";
             this.cotToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.cotToolStripMenuItem.Text = "cot(";
-            this.cotToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemSpecialCot_Click);
+            this.cotToolStripMenuItem.Tag = "cot(";
+            this.cotToolStripMenuItem.Text = "cot";
+            this.cotToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemSpecial_Click);
             // 
             // cmd0
             // 

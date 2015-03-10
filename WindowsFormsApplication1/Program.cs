@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Code of the launching of the application; as it's useless yet, nothing but the minimum requirements, provided by the Framework, was added.
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -7,9 +8,7 @@ namespace WindowsFormsApplication1
 {
     static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
+       
         [STAThread]
         static void Main()
         {
