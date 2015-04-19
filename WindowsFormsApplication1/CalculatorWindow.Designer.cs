@@ -71,6 +71,7 @@
             this.cmdSin = new System.Windows.Forms.Button();
             this.cmdParenthesisOpen = new System.Windows.Forms.Button();
             this.cmdParenthesisClose = new System.Windows.Forms.Button();
+            this.cmdAns = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -194,7 +195,7 @@
             this.cmdPlus.TabIndex = 10;
             this.cmdPlus.Text = "+";
             this.cmdPlus.UseVisualStyleBackColor = true;
-            this.cmdPlus.Click += new System.EventHandler(this.button_click);
+            this.cmdPlus.Click += new System.EventHandler(this.operator_click);
             // 
             // cmdMinus
             // 
@@ -205,7 +206,7 @@
             this.cmdMinus.TabIndex = 11;
             this.cmdMinus.Text = "-";
             this.cmdMinus.UseVisualStyleBackColor = true;
-            this.cmdMinus.Click += new System.EventHandler(this.button_click);
+            this.cmdMinus.Click += new System.EventHandler(this.operator_click);
             // 
             // cmdMultiiply
             // 
@@ -216,7 +217,7 @@
             this.cmdMultiiply.TabIndex = 12;
             this.cmdMultiiply.Text = "*";
             this.cmdMultiiply.UseVisualStyleBackColor = true;
-            this.cmdMultiiply.Click += new System.EventHandler(this.button_click);
+            this.cmdMultiiply.Click += new System.EventHandler(this.operator_click);
             // 
             // cmdDivide
             // 
@@ -227,7 +228,7 @@
             this.cmdDivide.TabIndex = 13;
             this.cmdDivide.Text = "/";
             this.cmdDivide.UseVisualStyleBackColor = true;
-            this.cmdDivide.Click += new System.EventHandler(this.button_click);
+            this.cmdDivide.Click += new System.EventHandler(this.operator_click);
             // 
             // lblPower
             // 
@@ -258,7 +259,7 @@
             this.specialCommandsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(522, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(517, 24);
             this.menuStrip1.TabIndex = 16;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -278,7 +279,7 @@
             this.normalToolStripMenuItem,
             this.converterToolStripMenuItem});
             this.modeToolStripMenuItem.Name = "modeToolStripMenuItem";
-            this.modeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.modeToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.modeToolStripMenuItem.Text = "&Mode";
             // 
             // mnuModeScientific
@@ -335,7 +336,7 @@
             this.engineerToolStripMenuItem,
             this.decimalToolStripMenuItem});
             this.writingToolStripMenuItem.Name = "writingToolStripMenuItem";
-            this.writingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.writingToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.writingToolStripMenuItem.Text = "Writing";
             // 
             // scientificToolStripMenuItem1
@@ -369,7 +370,7 @@
             // sin1ToolStripMenuItem
             // 
             this.sin1ToolStripMenuItem.Name = "sin1ToolStripMenuItem";
-            this.sin1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sin1ToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.sin1ToolStripMenuItem.Tag = "sin^(-1)(";
             this.sin1ToolStripMenuItem.Text = "sin^-1";
             this.sin1ToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemSpecial_Click);
@@ -377,7 +378,7 @@
             // cos1ToolStripMenuItem
             // 
             this.cos1ToolStripMenuItem.Name = "cos1ToolStripMenuItem";
-            this.cos1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cos1ToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.cos1ToolStripMenuItem.Tag = "cos^(-1)(";
             this.cos1ToolStripMenuItem.Text = "cos^-1";
             this.cos1ToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemSpecial_Click);
@@ -385,7 +386,7 @@
             // cotToolStripMenuItem
             // 
             this.cotToolStripMenuItem.Name = "cotToolStripMenuItem";
-            this.cotToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cotToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.cotToolStripMenuItem.Tag = "cot(";
             this.cotToolStripMenuItem.Text = "cot";
             this.cotToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemSpecial_Click);
@@ -489,11 +490,23 @@
             this.cmdParenthesisClose.UseVisualStyleBackColor = true;
             this.cmdParenthesisClose.Click += new System.EventHandler(this.button_click);
             // 
+            // cmdAns
+            // 
+            this.cmdAns.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmdAns.Location = new System.Drawing.Point(12, 223);
+            this.cmdAns.Name = "cmdAns";
+            this.cmdAns.Size = new System.Drawing.Size(59, 58);
+            this.cmdAns.TabIndex = 28;
+            this.cmdAns.Text = "Ans";
+            this.cmdAns.UseVisualStyleBackColor = true;
+            this.cmdAns.Click += new System.EventHandler(this.ansButton_click);
+            // 
             // Calculatorr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(522, 297);
+            this.ClientSize = new System.Drawing.Size(517, 288);
+            this.Controls.Add(this.cmdAns);
             this.Controls.Add(this.cmdParenthesisClose);
             this.Controls.Add(this.cmdParenthesisOpen);
             this.Controls.Add(this.cmdSin);
@@ -584,6 +597,7 @@
         private System.Windows.Forms.ToolStripMenuItem sin1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cos1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cotToolStripMenuItem;
+        private System.Windows.Forms.Button cmdAns;
     }
 }
 
