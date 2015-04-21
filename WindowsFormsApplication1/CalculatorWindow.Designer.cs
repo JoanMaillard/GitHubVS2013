@@ -72,6 +72,7 @@
             this.cmdParenthesisOpen = new System.Windows.Forms.Button();
             this.cmdParenthesisClose = new System.Windows.Forms.Button();
             this.cmdAns = new System.Windows.Forms.Button();
+            this.cmdClearAll = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -195,7 +196,7 @@
             this.cmdPlus.TabIndex = 10;
             this.cmdPlus.Text = "+";
             this.cmdPlus.UseVisualStyleBackColor = true;
-            this.cmdPlus.Click += new System.EventHandler(this.operator_click);
+            this.cmdPlus.Click += new System.EventHandler(this.button_click);
             // 
             // cmdMinus
             // 
@@ -206,7 +207,7 @@
             this.cmdMinus.TabIndex = 11;
             this.cmdMinus.Text = "-";
             this.cmdMinus.UseVisualStyleBackColor = true;
-            this.cmdMinus.Click += new System.EventHandler(this.operator_click);
+            this.cmdMinus.Click += new System.EventHandler(this.button_click);
             // 
             // cmdMultiiply
             // 
@@ -217,7 +218,7 @@
             this.cmdMultiiply.TabIndex = 12;
             this.cmdMultiiply.Text = "*";
             this.cmdMultiiply.UseVisualStyleBackColor = true;
-            this.cmdMultiiply.Click += new System.EventHandler(this.operator_click);
+            this.cmdMultiiply.Click += new System.EventHandler(this.button_click);
             // 
             // cmdDivide
             // 
@@ -228,7 +229,7 @@
             this.cmdDivide.TabIndex = 13;
             this.cmdDivide.Text = "/";
             this.cmdDivide.UseVisualStyleBackColor = true;
-            this.cmdDivide.Click += new System.EventHandler(this.operator_click);
+            this.cmdDivide.Click += new System.EventHandler(this.button_click);
             // 
             // lblPower
             // 
@@ -429,7 +430,7 @@
             this.cmdClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmdClear.Location = new System.Drawing.Point(149, 59);
             this.cmdClear.Name = "cmdClear";
-            this.cmdClear.Size = new System.Drawing.Size(123, 58);
+            this.cmdClear.Size = new System.Drawing.Size(59, 58);
             this.cmdClear.TabIndex = 20;
             this.cmdClear.Text = "&Clear";
             this.cmdClear.UseVisualStyleBackColor = true;
@@ -501,11 +502,23 @@
             this.cmdAns.UseVisualStyleBackColor = true;
             this.cmdAns.Click += new System.EventHandler(this.ansButton_click);
             // 
+            // cmdClearAll
+            // 
+            this.cmdClearAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmdClearAll.Location = new System.Drawing.Point(214, 60);
+            this.cmdClearAll.Name = "cmdClearAll";
+            this.cmdClearAll.Size = new System.Drawing.Size(59, 58);
+            this.cmdClearAll.TabIndex = 29;
+            this.cmdClearAll.Text = "CA";
+            this.cmdClearAll.UseVisualStyleBackColor = true;
+            this.cmdClearAll.Click += new System.EventHandler(this.cmd_ClearAll);
+            // 
             // Calculatorr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(517, 288);
+            this.Controls.Add(this.cmdClearAll);
             this.Controls.Add(this.cmdAns);
             this.Controls.Add(this.cmdParenthesisClose);
             this.Controls.Add(this.cmdParenthesisOpen);
@@ -598,6 +611,7 @@
         private System.Windows.Forms.ToolStripMenuItem cos1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cotToolStripMenuItem;
         private System.Windows.Forms.Button cmdAns;
+        private System.Windows.Forms.Button cmdClearAll;
     }
 }
 
