@@ -6,23 +6,22 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
+using Microsoft.CSharp;
+using System.CodeDom.Compiler;
+using System.Text.RegularExpressions;
 
 namespace WindowsFormsApplication1
 {
     public partial class Calculatorr : Form
     {
-        // Bool used for last calculus control
-        Boolean equalPressed = false;
-        Boolean zzAnalyzerKickedIn = false;
+        //Boolean zzAnalyzerKickedIn = false;
         String[] temp;
         Boolean DEBUG = false;
         String string1 = String.Empty;
-        //Boolean operationPressed = false;
-       // String operand1 = String.Empty;
-        //String operand2 = String.Empty;
-        //Char operation;
-        //Double result = 0.0;
+          
+
         public Calculatorr()
         {
             InitializeComponent();
@@ -39,16 +38,17 @@ namespace WindowsFormsApplication1
         }
 
      
-        private void ansButton_click(object sender, EventArgs e)
+        private void memButton_click(object sender, EventArgs e)
         {
             if (lblPreviousCalc.Text != "")
             {
+                if (lblResult.Text == "0")
                 lblResult.Text = "";
-                lblResult.Text += lblPreviousCalc.Text;
+                lblResult.Text = lblResult.Text + lblPreviousCalc.Text;
             }
         }
         // Operations when Clear is pressed
-        private void cmdClear_Click(object sender, EventArgs e)
+        private void cmdSave_Click(object sender, EventArgs e)
         {
             lblPreviousCalc.Text = lblResult.Text;
             lblResult.Text = "0";
@@ -56,29 +56,9 @@ namespace WindowsFormsApplication1
         // Operations when "=" is pressed
         private void cmdEqual_click(object sender, EventArgs e)
         {
-            equalPressed = true;
-           /* operationPressed = false;
-            Double num1, num2;
-            Double.TryParse(operand1, out num1);
-            Double.TryParse(operand2, out num2);
-            this.operand1 = String.Empty;
-            this.operand2 = String.Empty;
-            if (operation == '+')
-            { result = num1 + num2; }
-            else if (operation == '-')
-            { result = num1 - num2; }
-            else if (operation == '*')
-            {result = num1 * num2;}
-            else if (operation == '/')
-            {
-                if (num2 != 0.0)
-                    result = num1 / num2;
-                else
-                    result = 0;
-            }
-            lblResult.Text = Convert.ToString(result);*/
-            Analyzer((String)lblResult.Text);
-
+           // Doublize(lblResult.Text); (doublize pas encore au point)
+            lblResult.Text = (DoStupideCalc(lblResult.Text).ToString());
+           // CommaChanger(lblResult.Text); (Todo)
         }
        // Repeating the previous functions on the labels for the 3 special calculus in the additional list 
         private void ToolStripMenuItemSpecial_Click(object sender, EventArgs e)
@@ -89,64 +69,163 @@ namespace WindowsFormsApplication1
         // Method used when any button is pressed:
         private void Processor(String ButtonText) // String = type of variant wanted; ButtonText: name of the variant 
         {
-            if (equalPressed == true)
-            {
-                if (lblPreviousCalc.Text != "")
-                { lblPreviousCalc.Text = ""; }
-                lblPreviousCalc.Text = lblResult.Text;
-                lblResult.Text = "0";
-                equalPressed = false;
-            }
-            //Notation "0.xx" for numbers below 1, instead of ".xx"
-            if (lblResult.Text == "0")
-                if (ButtonText != ".")
-                    lblResult.Text = "";
-            lblResult.Text = lblResult.Text + ButtonText;
-          /*  if (operationPressed == false)
-            {
-                operand1 = operand1 + ButtonText;
-            }
-            else
-            {
-                operand2 = operand2 + ButtonText;
-            }*/
+            
+                //Notation "0.xx" for numbers below 1, instead of ".xx"
+                if (lblResult.Text == "0")
+                    if (ButtonText != "." && ButtonText != "+" && ButtonText != "-" && ButtonText != "*" && ButtonText != "/")
+                        lblResult.Text = "";
+                lblResult.Text = lblResult.Text + ButtonText;
+                if (ButtonText == "+" || ButtonText == "-" || ButtonText == "*" || ButtonText == "/")
+                    lblResult.Text = lblResult.Text + "(double)"; //Will be removed, is necessary to make decimals in numbers where the compiler would consider integers if not precised            
         }
 
-        /*private void OperationProcessor(String OperationText)
+   public double DoStupideCalc(string stupidFormula)
         {
-            if (equalPressed == true)
+            return CompiledCalc(stupidFormula);
+
+        }
+
+        // Genertate the dyanamic compiled assembly and do the calc
+        public double CompiledCalc(string stupidFormula)
+        {
+            
+            // Generate the compiler object and the parameter object
+            CSharpCodeProvider provider = new CSharpCodeProvider();
+            CompilerParameters parameters = new CompilerParameters();
+
+            //Set some basic parameters
+            // Reference to System.Drawing library
+            parameters.ReferencedAssemblies.Add("System.Drawing.dll");
+            // True - memory generation, false - external file generation
+            parameters.GenerateInMemory = true;
+            // True - exe file generation, false - dll file generation
+            parameters.GenerateExecutable = false;
+            
+            
+            // Compile the assembly
+            CompilerResults results = provider.CompileAssemblyFromSource(parameters, GetStupideCalcSourceCode(stupidFormula));
+
+            // Check the compilation result
+            if (results.Errors.HasErrors)
             {
-                if (lblPreviousCalc.Text != "")
-                { lblPreviousCalc.Text = ""; }
-                lblPreviousCalc.Text = lblResult.Text;
-                lblResult.Text = "0";
-                equalPressed = false;
-                operationPressed = true;
-                operand1 = lblPreviousCalc.Text;
+                StringBuilder sb = new StringBuilder();
+
+                foreach (CompilerError error in results.Errors)
+                {
+                    sb.AppendLine(String.Format("Error ({0}): {1}"/*, error.ErrorNumber /*(facultatif)*/, error.ErrorText));
+                }
+
+                MessageBox.Show(sb.ToString());
+                return 0;
             }
+
+            // If the compilation is sucessfull the execute the function
+            Type binaryFunction = results.CompiledAssembly.GetType("StupidCompiledCalculator.CompiledFunctions");
+            return (double) binaryFunction.GetMethod("CompiledCalc").Invoke(null,null);
+
+        }
+
+        // Source code for the operation to be compiled and then calculated
+        public string GetStupideCalcSourceCode(string stupidFormula)
+        {
+            string sourceCode;
+
+            sourceCode = @"
+                    using System;
+                    namespace StupidCompiledCalculator
+                    {
+                        public class CompiledFunctions
+                        {
+                                public static double CompiledCalc()
+                                {
+                                    return " + stupidFormula + @";
+                                }
+                        }
+                    }";
+
+            return sourceCode;
+        }
+
+        private void cmdClear_click(object sender, EventArgs e)
+        {
+            lblResult.Text = "0";
+        }
+
+        private void cmdClearAll_click(object sender, EventArgs e)
+        {
+            lblResult.Text = "0";
+            lblPreviousCalc.Text = "0";
+            lblPower.Text = String.Empty;
+        }
+
+        private void cmdSin_click(object sender, EventArgs e)
+        {
+            eraser();
+            lblResult.Text = lblResult.Text + "Math.Sin(";
+        }
+
+        private void cmdCos_click(object sender, EventArgs e)
+        {
+            eraser();
+            lblResult.Text = lblResult.Text + "Math.Cos(";
+        }
+
+        private void cmdTan_click(object sender, EventArgs e)
+        {
+            eraser();
+            lblResult.Text = lblResult.Text + "Math.Tan(";
+        }
+
+        private void cmdPower_click(object sender, EventArgs e)
+        {
+            eraser();
+            lblResult.Text = lblResult.Text + "Math.Pow(";
+        }
+
+        private void cmdSquareRoot_click(object sender, EventArgs e)
+        {
+            eraser();
+            lblResult.Text = lblResult.Text + "Math.Sqrt(";
+        }
+
+        private void eraser()
+        {
             if (lblResult.Text == "0")
+                lblResult.Text = String.Empty;
+        }
+
+
+       /* private void Doublize (string Analyzable)
+        {
+            StringBuilder sb = new StringBuilder();
+            Boolean banane = false;
+            String  Number = "1234567890.";
+            foreach (var c in Analyzable)
             {
-                lblResult.Text = "";
-                lblResult.Text = lblPreviousCalc.Text + OperationText;
+                if (Number.Contains(c) && banane == false)
+                {
+                    sb.Append("(double)").Append(c);
+                    banane = true;
+                }
+                else if (!Number.Contains(c))
+                    banane = false;
             }
-            else
-            {
-                lblResult.Text += OperationText;
-                operationPressed = true;
-            }
-            operation = (Convert.ToChar(OperationText));
+            MessageBox.Show (Analyzable);
+
         }*/
+
+
+
 
         
 
 
         // Syntax analyzer (todo)
-    private void Analyzer (String Calculus)
+  /*  private void Analyzer (String Calculus)
         {
-            zzAnalyzerKickedIn = false;
+            //zzAnalyzerKickedIn = false;
             //int n;    
             char[] operators = {'+', '-', '*', '/', 's', 'c', 't', '(', ')'};
-            char[] numbers = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.' };
             //auto-generating array on this line of code
 
    
@@ -158,7 +237,6 @@ namespace WindowsFormsApplication1
                         string1 = ZzAnalyzer(WHATEVER, 0);
                        
                     }
-                    MessageBox.Show(string1);
                     temp = string1.Split('-');
                     foreach (String WHATEVER in temp)
                     {
@@ -178,34 +256,26 @@ namespace WindowsFormsApplication1
                          string1 = ZzAnalyzer(WHATEVER, 3);
                      
                     }
-                    foreach (String WHATEVER in temp)
+                    /*foreach (String WHATEVER in temp)
                     {
                     if (zzAnalyzerKickedIn == false)
                         ZzAnalyzer(WHATEVER, 4);
                     }
 
                 
-                /*else if (operators.Contains(c))
-                {
-          
 
-                }
-                else //error case
-                {
-                    lblPower.Text = "Error, please press the CA button";
-                }*/
         }
-
+// the next 2 methods will be used for nultiple operators.
     private Boolean MultipleOperators(String OPS) {
         int x = 0;
         foreach (char c in OPS) { if (c == '+' || c == '-' || c == '*' || c == '/') x++; }
-        if ( x>1 )
+        if (x > 1)
         {
             return true;
         }
         else
         return false; 
-    } // These 2 missing 'n' needed
+    }
     private Boolean MultipleOperators(char[] OPS) {
         int x = 0;
         foreach (char c in OPS) { if (c == '+' || c == '-' || c == '*' || c == '/') x++; }
@@ -217,18 +287,17 @@ namespace WindowsFormsApplication1
             return false;  
     }
 
-    private String ZzAnalyzer(String ZzCalculus, int Type) 
+    private String ZzAnalyzer(String ZzCalculus, int Type) //this part of the code is where everything is calculated
     {
         Boolean error = false;
         String ReturnValue = String.Empty;
         Double num_a = 0.0, num_b = 0.0;
         switch (Type)
         {
-            
             case 0:
                 
                     
-                    zzAnalyzerKickedIn = true;
+                    //zzAnalyzerKickedIn = true;
                     try
                     {
                         num_a = Double.Parse(temp[0]);
@@ -239,8 +308,8 @@ namespace WindowsFormsApplication1
                     {
                         num_a = num_a + num_b;
                         Math.Round(num_a, 10);
-                        lblResult.Text = (num_a.ToString());
-                       
+                        lblResult.Text = "0";
+                        lblPreviousCalc.Text = (num_a.ToString());
                     }
                     else
                         ReturnValue = ZzCalculus;
@@ -248,7 +317,7 @@ namespace WindowsFormsApplication1
                     break;
            
             case 1:
-                    zzAnalyzerKickedIn = true;
+                    //zzAnalyzerKickedIn = true;
                 try
                     {
                         num_a = Double.Parse(temp[0]);
@@ -259,7 +328,8 @@ namespace WindowsFormsApplication1
                 {
                     num_a = num_a - num_b;
                     Math.Round(num_a, 10);
-                    lblResult.Text = (num_a.ToString());
+                    lblResult.Text = "0";
+                    lblPreviousCalc.Text = (num_a.ToString());
                 }
                 else
                     ReturnValue = string1;
@@ -267,7 +337,7 @@ namespace WindowsFormsApplication1
            
             case 2:
                   
-                    zzAnalyzerKickedIn = true;
+                  //  zzAnalyzerKickedIn = true;
                 try
                     {
                         num_a = Double.Parse(temp[0]);
@@ -278,7 +348,8 @@ namespace WindowsFormsApplication1
                 {
                     num_a = num_a / num_b;
                     Math.Round(num_a, 10);
-                    lblResult.Text = (num_a.ToString());
+                    lblResult.Text = "0";
+                    lblPreviousCalc.Text = (num_a.ToString());
                 }
                 else
                     ReturnValue = string1;
@@ -286,7 +357,7 @@ namespace WindowsFormsApplication1
             
             case 3:
                   
-                    zzAnalyzerKickedIn = true;
+                  //  zzAnalyzerKickedIn = true;
                 try 
                     {
                         num_a = Double.Parse(temp[0]);
@@ -297,7 +368,8 @@ namespace WindowsFormsApplication1
                 {
                     num_a = num_a * num_b;
                     Math.Round(num_a, 10);
-                    lblResult.Text = (num_a.ToString());
+                    lblResult.Text = "0";
+                    lblPreviousCalc.Text = (num_a.ToString());
                 }
                     break;
             default:
@@ -309,25 +381,11 @@ namespace WindowsFormsApplication1
         
         return ReturnValue;
     }
+    */
+   
 
-    private void cmd_ClearAll(object sender, EventArgs e) // this event reinitializes all the actions ever made in the calculator.
-    {
-        equalPressed = false;
-        lblPower.Text = "";
-        lblPreviousCalc.Text = "";
-        lblResult.Text = "";
-    }
 
-       
 
-        
     }
 }
-/*
-private void asdéfkkj(
-int num1, num2;
-num1 'op' num2
 
-num2 = num1 op num2
-
-*/

@@ -65,14 +65,18 @@
             this.cmd0 = new System.Windows.Forms.Button();
             this.cmdDot = new System.Windows.Forms.Button();
             this.cmdEqual = new System.Windows.Forms.Button();
-            this.cmdClear = new System.Windows.Forms.Button();
+            this.cmdSave = new System.Windows.Forms.Button();
             this.cmdTan = new System.Windows.Forms.Button();
             this.cmdCos = new System.Windows.Forms.Button();
             this.cmdSin = new System.Windows.Forms.Button();
             this.cmdParenthesisOpen = new System.Windows.Forms.Button();
             this.cmdParenthesisClose = new System.Windows.Forms.Button();
-            this.cmdAns = new System.Windows.Forms.Button();
+            this.cmdMemory = new System.Windows.Forms.Button();
+            this.cmdClear = new System.Windows.Forms.Button();
             this.cmdClearAll = new System.Windows.Forms.Button();
+            this.cmdPower = new System.Windows.Forms.Button();
+            this.cmdComma = new System.Windows.Forms.Button();
+            this.cmdSquareRoot = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -251,6 +255,7 @@
             this.lblPreviousCalc.Name = "lblPreviousCalc";
             this.lblPreviousCalc.Size = new System.Drawing.Size(361, 27);
             this.lblPreviousCalc.TabIndex = 15;
+            this.lblPreviousCalc.Text = "0";
             this.lblPreviousCalc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // menuStrip1
@@ -425,16 +430,16 @@
             this.cmdEqual.UseVisualStyleBackColor = true;
             this.cmdEqual.Click += new System.EventHandler(this.cmdEqual_click);
             // 
-            // cmdClear
+            // cmdSave
             // 
-            this.cmdClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmdClear.Location = new System.Drawing.Point(149, 59);
-            this.cmdClear.Name = "cmdClear";
-            this.cmdClear.Size = new System.Drawing.Size(59, 58);
-            this.cmdClear.TabIndex = 20;
-            this.cmdClear.Text = "&Clear";
-            this.cmdClear.UseVisualStyleBackColor = true;
-            this.cmdClear.Click += new System.EventHandler(this.cmdClear_Click);
+            this.cmdSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmdSave.Location = new System.Drawing.Point(149, 59);
+            this.cmdSave.Name = "cmdSave";
+            this.cmdSave.Size = new System.Drawing.Size(59, 58);
+            this.cmdSave.TabIndex = 20;
+            this.cmdSave.Text = "&Save";
+            this.cmdSave.UseVisualStyleBackColor = true;
+            this.cmdSave.Click += new System.EventHandler(this.cmdSave_Click);
             // 
             // cmdTan
             // 
@@ -445,7 +450,7 @@
             this.cmdTan.TabIndex = 23;
             this.cmdTan.Text = "tan(";
             this.cmdTan.UseVisualStyleBackColor = true;
-            this.cmdTan.Click += new System.EventHandler(this.button_click);
+            this.cmdTan.Click += new System.EventHandler(this.cmdTan_click);
             // 
             // cmdCos
             // 
@@ -456,7 +461,7 @@
             this.cmdCos.TabIndex = 24;
             this.cmdCos.Text = "cos(";
             this.cmdCos.UseVisualStyleBackColor = true;
-            this.cmdCos.Click += new System.EventHandler(this.button_click);
+            this.cmdCos.Click += new System.EventHandler(this.cmdCos_click);
             // 
             // cmdSin
             // 
@@ -467,7 +472,7 @@
             this.cmdSin.TabIndex = 25;
             this.cmdSin.Text = "sin(";
             this.cmdSin.UseVisualStyleBackColor = true;
-            this.cmdSin.Click += new System.EventHandler(this.button_click);
+            this.cmdSin.Click += new System.EventHandler(this.cmdSin_click);
             // 
             // cmdParenthesisOpen
             // 
@@ -483,7 +488,7 @@
             // cmdParenthesisClose
             // 
             this.cmdParenthesisClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmdParenthesisClose.Location = new System.Drawing.Point(214, 114);
+            this.cmdParenthesisClose.Location = new System.Drawing.Point(149, 169);
             this.cmdParenthesisClose.Name = "cmdParenthesisClose";
             this.cmdParenthesisClose.Size = new System.Drawing.Size(58, 58);
             this.cmdParenthesisClose.TabIndex = 27;
@@ -491,41 +496,89 @@
             this.cmdParenthesisClose.UseVisualStyleBackColor = true;
             this.cmdParenthesisClose.Click += new System.EventHandler(this.button_click);
             // 
-            // cmdAns
+            // cmdMemory
             // 
-            this.cmdAns.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmdAns.Location = new System.Drawing.Point(12, 223);
-            this.cmdAns.Name = "cmdAns";
-            this.cmdAns.Size = new System.Drawing.Size(59, 58);
-            this.cmdAns.TabIndex = 28;
-            this.cmdAns.Text = "Ans";
-            this.cmdAns.UseVisualStyleBackColor = true;
-            this.cmdAns.Click += new System.EventHandler(this.ansButton_click);
+            this.cmdMemory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmdMemory.Location = new System.Drawing.Point(12, 223);
+            this.cmdMemory.Name = "cmdMemory";
+            this.cmdMemory.Size = new System.Drawing.Size(59, 58);
+            this.cmdMemory.TabIndex = 28;
+            this.cmdMemory.Text = "Mem";
+            this.cmdMemory.UseVisualStyleBackColor = true;
+            this.cmdMemory.Click += new System.EventHandler(this.memButton_click);
+            // 
+            // cmdClear
+            // 
+            this.cmdClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmdClear.Location = new System.Drawing.Point(205, 60);
+            this.cmdClear.Name = "cmdClear";
+            this.cmdClear.Size = new System.Drawing.Size(61, 57);
+            this.cmdClear.TabIndex = 29;
+            this.cmdClear.Text = "Clear";
+            this.cmdClear.UseVisualStyleBackColor = true;
+            this.cmdClear.Click += new System.EventHandler(this.cmdClear_click);
             // 
             // cmdClearAll
             // 
             this.cmdClearAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmdClearAll.Location = new System.Drawing.Point(214, 60);
+            this.cmdClearAll.Location = new System.Drawing.Point(205, 114);
             this.cmdClearAll.Name = "cmdClearAll";
-            this.cmdClearAll.Size = new System.Drawing.Size(59, 58);
-            this.cmdClearAll.TabIndex = 29;
-            this.cmdClearAll.Text = "CA";
+            this.cmdClearAll.Size = new System.Drawing.Size(61, 58);
+            this.cmdClearAll.TabIndex = 30;
+            this.cmdClearAll.Text = "Clear All";
             this.cmdClearAll.UseVisualStyleBackColor = true;
-            this.cmdClearAll.Click += new System.EventHandler(this.cmd_ClearAll);
+            this.cmdClearAll.Click += new System.EventHandler(this.cmdClearAll_click);
+            // 
+            // cmdPower
+            // 
+            this.cmdPower.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmdPower.Location = new System.Drawing.Point(69, 60);
+            this.cmdPower.Name = "cmdPower";
+            this.cmdPower.Size = new System.Drawing.Size(63, 57);
+            this.cmdPower.TabIndex = 31;
+            this.cmdPower.Text = "Power";
+            this.cmdPower.UseVisualStyleBackColor = true;
+            this.cmdPower.Click += new System.EventHandler(this.cmdPower_click);
+            // 
+            // cmdComma
+            // 
+            this.cmdComma.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmdComma.Location = new System.Drawing.Point(130, 60);
+            this.cmdComma.Name = "cmdComma";
+            this.cmdComma.Size = new System.Drawing.Size(22, 57);
+            this.cmdComma.TabIndex = 32;
+            this.cmdComma.Text = ",";
+            this.cmdComma.UseVisualStyleBackColor = true;
+            this.cmdComma.Click += new System.EventHandler(this.button_click);
+            // 
+            // cmdSquareRoot
+            // 
+            this.cmdSquareRoot.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmdSquareRoot.Location = new System.Drawing.Point(69, 114);
+            this.cmdSquareRoot.Name = "cmdSquareRoot";
+            this.cmdSquareRoot.Size = new System.Drawing.Size(63, 58);
+            this.cmdSquareRoot.TabIndex = 33;
+            this.cmdSquareRoot.Text = "Sqrt";
+            this.cmdSquareRoot.UseVisualStyleBackColor = true;
+            this.cmdSquareRoot.Click += new System.EventHandler(this.cmdSquareRoot_click);
             // 
             // Calculatorr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(517, 288);
+            this.Controls.Add(this.cmdSquareRoot);
+            this.Controls.Add(this.cmdComma);
+            this.Controls.Add(this.cmdPower);
             this.Controls.Add(this.cmdClearAll);
-            this.Controls.Add(this.cmdAns);
+            this.Controls.Add(this.cmdClear);
+            this.Controls.Add(this.cmdMemory);
             this.Controls.Add(this.cmdParenthesisClose);
             this.Controls.Add(this.cmdParenthesisOpen);
             this.Controls.Add(this.cmdSin);
             this.Controls.Add(this.cmdCos);
             this.Controls.Add(this.cmdTan);
-            this.Controls.Add(this.cmdClear);
+            this.Controls.Add(this.cmdSave);
             this.Controls.Add(this.cmdEqual);
             this.Controls.Add(this.cmdDot);
             this.Controls.Add(this.cmd0);
@@ -600,7 +653,7 @@
         private System.Windows.Forms.Button cmd0;
         private System.Windows.Forms.Button cmdDot;
         private System.Windows.Forms.Button cmdEqual;
-        private System.Windows.Forms.Button cmdClear;
+        private System.Windows.Forms.Button cmdSave;
         private System.Windows.Forms.Button cmdTan;
         private System.Windows.Forms.Button cmdCos;
         private System.Windows.Forms.Button cmdSin;
@@ -610,8 +663,12 @@
         private System.Windows.Forms.ToolStripMenuItem sin1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cos1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cotToolStripMenuItem;
-        private System.Windows.Forms.Button cmdAns;
+        private System.Windows.Forms.Button cmdMemory;
+        private System.Windows.Forms.Button cmdClear;
         private System.Windows.Forms.Button cmdClearAll;
+        private System.Windows.Forms.Button cmdPower;
+        private System.Windows.Forms.Button cmdComma;
+        private System.Windows.Forms.Button cmdSquareRoot;
     }
 }
 
