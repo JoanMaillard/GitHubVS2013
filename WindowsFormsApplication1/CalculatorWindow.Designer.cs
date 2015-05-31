@@ -77,6 +77,7 @@
             this.cmdPower = new System.Windows.Forms.Button();
             this.cmdComma = new System.Windows.Forms.Button();
             this.cmdSquareRoot = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -448,9 +449,10 @@
             this.cmdTan.Name = "cmdTan";
             this.cmdTan.Size = new System.Drawing.Size(59, 58);
             this.cmdTan.TabIndex = 23;
-            this.cmdTan.Text = "tan(";
+            this.cmdTan.Tag = "Special";
+            this.cmdTan.Text = "Tan(";
             this.cmdTan.UseVisualStyleBackColor = true;
-            this.cmdTan.Click += new System.EventHandler(this.cmdTan_click);
+            this.cmdTan.Click += new System.EventHandler(this.button_click);
             // 
             // cmdCos
             // 
@@ -459,9 +461,10 @@
             this.cmdCos.Name = "cmdCos";
             this.cmdCos.Size = new System.Drawing.Size(59, 58);
             this.cmdCos.TabIndex = 24;
-            this.cmdCos.Text = "cos(";
+            this.cmdCos.Tag = "Special";
+            this.cmdCos.Text = "Cos(";
             this.cmdCos.UseVisualStyleBackColor = true;
-            this.cmdCos.Click += new System.EventHandler(this.cmdCos_click);
+            this.cmdCos.Click += new System.EventHandler(this.button_click);
             // 
             // cmdSin
             // 
@@ -470,9 +473,10 @@
             this.cmdSin.Name = "cmdSin";
             this.cmdSin.Size = new System.Drawing.Size(59, 58);
             this.cmdSin.TabIndex = 25;
-            this.cmdSin.Text = "sin(";
+            this.cmdSin.Tag = "Special";
+            this.cmdSin.Text = "Sin(";
             this.cmdSin.UseVisualStyleBackColor = true;
-            this.cmdSin.Click += new System.EventHandler(this.cmdSin_click);
+            this.cmdSin.Click += new System.EventHandler(this.button_click);
             // 
             // cmdParenthesisOpen
             // 
@@ -536,9 +540,10 @@
             this.cmdPower.Name = "cmdPower";
             this.cmdPower.Size = new System.Drawing.Size(63, 57);
             this.cmdPower.TabIndex = 31;
-            this.cmdPower.Text = "Power";
+            this.cmdPower.Tag = "Special";
+            this.cmdPower.Text = "Pow(";
             this.cmdPower.UseVisualStyleBackColor = true;
-            this.cmdPower.Click += new System.EventHandler(this.cmdPower_click);
+            this.cmdPower.Click += new System.EventHandler(this.button_click);
             // 
             // cmdComma
             // 
@@ -558,15 +563,29 @@
             this.cmdSquareRoot.Name = "cmdSquareRoot";
             this.cmdSquareRoot.Size = new System.Drawing.Size(63, 58);
             this.cmdSquareRoot.TabIndex = 33;
-            this.cmdSquareRoot.Text = "Sqrt";
+            this.cmdSquareRoot.Tag = "Special";
+            this.cmdSquareRoot.Text = "Sqrt(";
             this.cmdSquareRoot.UseVisualStyleBackColor = true;
-            this.cmdSquareRoot.Click += new System.EventHandler(this.cmdSquareRoot_click);
+            this.cmdSquareRoot.Click += new System.EventHandler(this.button_click);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.button1.Location = new System.Drawing.Point(69, 169);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(63, 58);
+            this.button1.TabIndex = 34;
+            this.button1.Tag = "Special";
+            this.button1.Text = "Log(";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button_click);
             // 
             // Calculatorr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(517, 288);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.cmdSquareRoot);
             this.Controls.Add(this.cmdComma);
             this.Controls.Add(this.cmdPower);
@@ -669,6 +688,7 @@
         private System.Windows.Forms.Button cmdPower;
         private System.Windows.Forms.Button cmdComma;
         private System.Windows.Forms.Button cmdSquareRoot;
+        private System.Windows.Forms.Button button1;
     }
 }
 
