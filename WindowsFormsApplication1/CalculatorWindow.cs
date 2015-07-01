@@ -16,7 +16,7 @@ namespace WindowsFormsApplication1
 {
     public partial class Calculatorr : Form
     {
-        //Boolean zzAnalyzerKickedIn = false;
+        Boolean calculated = false;
         String string1 = String.Empty;
           
 
@@ -41,17 +41,25 @@ namespace WindowsFormsApplication1
         {
             eraser();
             lblResult.Text = lblResult.Text + "Math." + SpecButtonText;
+            string1 = string1 + "Math." + SpecButtonText;
+
         }
         private void Processor(String ButtonText) // String = type of variant wanted; ButtonText: name of the variant 
         {
-
+            if (calculated == true)
+            {
+                lblPreviousCalc.Text = lblResult.Text;
+                lblResult.Text = "0";
+                calculated = false;
+            }
             //Notation "0.xx" for numbers below 1, instead of ".xx"
             if (lblResult.Text == "0")
                 if (ButtonText != "." && ButtonText != "+" && ButtonText != "-" && ButtonText != "*" && ButtonText != "/")
                     lblResult.Text = "";
             lblResult.Text = lblResult.Text + ButtonText;
+            string1 = string1 + ButtonText;
             if (ButtonText == "+" || ButtonText == "-" || ButtonText == "*" || ButtonText == "/")
-                lblResult.Text = lblResult.Text + "(double)"; //Will be removed, is necessary to make decimals in numbers where the compiler would consider integers if not precised            
+                string1 = string1 + "(double)"; //Will be removed, is necessary to make decimals in numbers where the compiler would consider integers if not precised            
         }
         private void memButton_click(object sender, EventArgs e)
         {
@@ -67,18 +75,22 @@ namespace WindowsFormsApplication1
         {
             lblPreviousCalc.Text = lblResult.Text;
             lblResult.Text = "0";
+            string1 = String.Empty;
+            calculated = false;
         }
         // Operations when "=" is pressed
         private void cmdEqual_click(object sender, EventArgs e)
         {
-           // Doublize(lblResult.Text); (doublize pas encore au point)
-            lblResult.Text = (DoStupideCalc(lblResult.Text).ToString());
+            //Doublize(lblResult.Text); //(doublize pas encore au point)
+            lblResult.Text = (DoStupideCalc(string1).ToString());
             /*foreach (char c in lblResult.Text)
             {
             if (c == ',')
                 c = '.';
             }*/ //alternative Regex à trouver
            // CommaChanger(lblResult.Text); (Todo)
+            string1 = String.Empty;
+            calculated = true;
         }
        // Repeating the previous functions on the labels for the 3 special calculus in the additional list 
         private void ToolStripMenuItemSpecial_Click(object sender, EventArgs e)
@@ -89,24 +101,26 @@ namespace WindowsFormsApplication1
         private void cmdClear_click(object sender, EventArgs e)
         {
             lblResult.Text = "0";
+            string1 = String.Empty;
         }
 
         private void cmdClearAll_click(object sender, EventArgs e)
         {
             lblResult.Text = "0";
-            lblPreviousCalc.Text = "0";
+            lblPreviousCalc.Text = String.Empty;
             lblPower.Text = String.Empty;
+            string1 = String.Empty;
         }
         private void eraser()
         {
             if (lblResult.Text == "0")
-                lblResult.Text = String.Empty;
+            lblResult.Text = String.Empty;
+           
         }
 
    public double DoStupideCalc(string stupidFormula)
         {
             return CompiledCalc(stupidFormula);
-
         }
 
         // Genertate the dyanamic compiled assembly and do the calc
@@ -171,23 +185,30 @@ namespace WindowsFormsApplication1
             return sourceCode;
         }
 
-       /* private void Doublize (string Analyzable)
+        /*private string Doublize (string Analyzable)
         {
-            StringBuilder l = new StringBuilder();
-            Boolean banane = false;
-            String  Number = "1234567890.";
-            foreach (var c in Analyzable)
+            string[] temp = new string[2];
+            StringBuilder doublized = new StringBuilder();
+            foreach (char c in Analyzable)
             {
-                if (Number.Contains(c) && banane == false)
+                if (c == '+' || c == '-' || c == '*' || c == '/')
                 {
-                    sb.Append("(double)").Append(c);
-                    banane = true;
-                }
-                else if (!Number.Contains(c))
-                    banane = false;
-            }
-            MessageBox.Show (Analyzable);
+                    int temp2 = Analyzable.Split(c).Length;
+                    if (!(temp2 == 2)) {
+                        for (int i = 0; i < temp2; i++)
+                        {
+                            temp[i] = Analyzable.Split(c)[i];
+                            //never reaches that line
 
+                        }
+                    }
+                    
+                    doublized.AppendLine(String.Format("{0}{1}(double){2}", temp[0], c, temp[1]));
+                    Analyzable = doublized.ToString();           
+                }
+             
+            }
+            return Analyzable;
         }*/
 
     }
