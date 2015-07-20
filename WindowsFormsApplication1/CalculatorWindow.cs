@@ -17,22 +17,24 @@ namespace WindowsFormsApplication1
     public partial class Calculatorr : Form
     {
         Boolean calculated = false;
-        String string1 = String.Empty;
+        String CorrectedString = String.Empty;
           
 
         public Calculatorr()
         {
             InitializeComponent();
         }
-        // Function called at startup. Does nothing in this case.
+        // Function called at startup. Just says hello in this case.
         private void Calculatorr_Load(object sender, EventArgs e)
-        {}
+        {
+            MessageBox.Show("Hello, thanks for using my crappy beta calculator instead of your OS's :D");
+        }
         // When any number or operation is pressed
         private void button_click(object sender, EventArgs e)
         {
             Button pressedButton = (Button)sender; // Declaration of the "pressedButton" object
         // Generic function for the number and signs to be displayed when clicked
-            if (pressedButton.Tag == "Special")
+            if (pressedButton.Tag== "Special")
                 SpecButton_click(pressedButton.Text);
             else
                 Processor(pressedButton.Text);
@@ -41,25 +43,23 @@ namespace WindowsFormsApplication1
         {
             eraser();
             lblResult.Text = lblResult.Text + "Math." + SpecButtonText;
-            string1 = string1 + "Math." + SpecButtonText;
+            //string1 = string1 + "Math." + SpecButtonText;
 
         }
         private void Processor(String ButtonText) // String = type of variant wanted; ButtonText: name of the variant 
         {
-            if (calculated == true)
+            String TypeTester = "1234567890";
+            if (calculated == true && TypeTester.Contains(ButtonText))
             {
                 lblPreviousCalc.Text = lblResult.Text;
                 lblResult.Text = "0";
-                calculated = false;
             }
+            calculated = false;
             //Notation "0.xx" for numbers below 1, instead of ".xx"
             if (lblResult.Text == "0")
                 if (ButtonText != "." && ButtonText != "+" && ButtonText != "-" && ButtonText != "*" && ButtonText != "/")
                     lblResult.Text = "";
-            lblResult.Text = lblResult.Text + ButtonText;
-            string1 = string1 + ButtonText;
-            if (ButtonText == "+" || ButtonText == "-" || ButtonText == "*" || ButtonText == "/")
-                string1 = string1 + "(double)"; //Will be removed, is necessary to make decimals in numbers where the compiler would consider integers if not precised            
+            lblResult.Text = lblResult.Text + ButtonText;      
         }
         private void memButton_click(object sender, EventArgs e)
         {
@@ -75,33 +75,35 @@ namespace WindowsFormsApplication1
         {
             lblPreviousCalc.Text = lblResult.Text;
             lblResult.Text = "0";
-            string1 = String.Empty;
+            CorrectedString = String.Empty;
             calculated = false;
         }
         // Operations when "=" is pressed
         private void cmdEqual_click(object sender, EventArgs e)
         {
-            //Doublize(lblResult.Text); //(doublize pas encore au point)
-            lblResult.Text = (DoStupideCalc(string1).ToString());
-            /*foreach (char c in lblResult.Text)
+            foreach (char c in lblResult.Text)
             {
-            if (c == ',')
-                c = '.';
-            }*/ //alternative Regex à trouver
-           // CommaChanger(lblResult.Text); (Todo)
-            string1 = String.Empty;
+                if (c == '+' || c == '-' || c == '*' || c == '/')
+                    CorrectedString = CorrectedString + c + "(double)";
+                else if (c == ',')
+                    CorrectedString = CorrectedString + '.';
+                else
+                    CorrectedString = CorrectedString + c;
+            }
+            lblResult.Text = (DoStupideCalc(CorrectedString).ToString());
+            CorrectedString = String.Empty;
             calculated = true;
         }
        // Repeating the previous functions on the labels for the 3 special calculus in the additional list 
         private void ToolStripMenuItemSpecial_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem clickedMenu = (ToolStripMenuItem)sender;
-            Processor((String)clickedMenu.Tag);
+            SpecButton_click(clickedMenu.Text);
         }
         private void cmdClear_click(object sender, EventArgs e)
         {
             lblResult.Text = "0";
-            string1 = String.Empty;
+            CorrectedString = String.Empty;
         }
 
         private void cmdClearAll_click(object sender, EventArgs e)
@@ -109,16 +111,16 @@ namespace WindowsFormsApplication1
             lblResult.Text = "0";
             lblPreviousCalc.Text = String.Empty;
             lblPower.Text = String.Empty;
-            string1 = String.Empty;
+            CorrectedString = String.Empty;
         }
-        private void eraser()
+        private void eraser() //erases the content of the visible calculation champ if there only is the default display (0)
         {
             if (lblResult.Text == "0")
             lblResult.Text = String.Empty;
            
         }
 
-   public double DoStupideCalc(string stupidFormula)
+        public double DoStupideCalc(string stupidFormula)
         {
             return CompiledCalc(stupidFormula);
         }
@@ -146,21 +148,20 @@ namespace WindowsFormsApplication1
             // Check the compilation result
             if (results.Errors.HasErrors)
             {
-                StringBuilder sb = new StringBuilder();
+                StringBuilder ErrorBuilder = new StringBuilder();
 
                 foreach (CompilerError error in results.Errors)
                 {
-                    sb.AppendLine(String.Format("Error ({0}): {1}", error.ErrorNumber /*(facultatif)*/, error.ErrorText));
+                    ErrorBuilder.AppendLine(String.Format("Error ({0}): {1}", error.ErrorNumber /*(facultatif)*/, error.ErrorText));
                 }
 
-                MessageBox.Show(sb.ToString());
+                MessageBox.Show(ErrorBuilder.ToString());
                 return 42;
             }
 
             // If the compilation is sucessfull, execute the function
             Type binaryFunction = results.CompiledAssembly.GetType("StupidCompiledCalculator.CompiledFunctions");
             return (double) binaryFunction.GetMethod("CompiledCalc").Invoke(null,null);
-
         }
 
         // Source code for the operation to be compiled and then calculated
@@ -177,40 +178,13 @@ namespace WindowsFormsApplication1
                                 public static double CompiledCalc()
                                 {
                                     return " + stupidFormula + @";
-                                    
                                 }
                         }
                     }"; 
 
             return sourceCode;
+
         }
-
-        /*private string Doublize (string Analyzable)
-        {
-            string[] temp = new string[2];
-            StringBuilder doublized = new StringBuilder();
-            foreach (char c in Analyzable)
-            {
-                if (c == '+' || c == '-' || c == '*' || c == '/')
-                {
-                    int temp2 = Analyzable.Split(c).Length;
-                    if (!(temp2 == 2)) {
-                        for (int i = 0; i < temp2; i++)
-                        {
-                            temp[i] = Analyzable.Split(c)[i];
-                            //never reaches that line
-
-                        }
-                    }
-                    
-                    doublized.AppendLine(String.Format("{0}{1}(double){2}", temp[0], c, temp[1]));
-                    Analyzable = doublized.ToString();           
-                }
-             
-            }
-            return Analyzable;
-        }*/
-
     }
 }
 
