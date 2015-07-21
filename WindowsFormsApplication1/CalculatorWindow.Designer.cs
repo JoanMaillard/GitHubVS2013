@@ -78,13 +78,16 @@
             this.cmdSquareRoot = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.cmdQuitApplication = new System.Windows.Forms.Button();
+            this.cmdMinimize = new System.Windows.Forms.Button();
+            this.cmdPoint = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmd1
             // 
             this.cmd1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmd1.Location = new System.Drawing.Point(299, 59);
+            this.cmd1.Location = new System.Drawing.Point(298, 87);
             this.cmd1.Name = "cmd1";
             this.cmd1.Size = new System.Drawing.Size(59, 59);
             this.cmd1.TabIndex = 0;
@@ -95,7 +98,7 @@
             // cmd2
             // 
             this.cmd2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmd2.Location = new System.Drawing.Point(354, 59);
+            this.cmd2.Location = new System.Drawing.Point(353, 87);
             this.cmd2.Name = "cmd2";
             this.cmd2.Size = new System.Drawing.Size(59, 58);
             this.cmd2.TabIndex = 1;
@@ -106,7 +109,7 @@
             // cmd3
             // 
             this.cmd3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmd3.Location = new System.Drawing.Point(410, 59);
+            this.cmd3.Location = new System.Drawing.Point(409, 87);
             this.cmd3.Name = "cmd3";
             this.cmd3.Size = new System.Drawing.Size(59, 58);
             this.cmd3.TabIndex = 2;
@@ -117,7 +120,7 @@
             // cmd4
             // 
             this.cmd4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmd4.Location = new System.Drawing.Point(299, 114);
+            this.cmd4.Location = new System.Drawing.Point(298, 142);
             this.cmd4.Name = "cmd4";
             this.cmd4.Size = new System.Drawing.Size(59, 58);
             this.cmd4.TabIndex = 3;
@@ -128,7 +131,7 @@
             // cmd5
             // 
             this.cmd5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmd5.Location = new System.Drawing.Point(354, 114);
+            this.cmd5.Location = new System.Drawing.Point(353, 142);
             this.cmd5.Name = "cmd5";
             this.cmd5.Size = new System.Drawing.Size(59, 58);
             this.cmd5.TabIndex = 4;
@@ -139,7 +142,7 @@
             // cmd6
             // 
             this.cmd6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmd6.Location = new System.Drawing.Point(410, 114);
+            this.cmd6.Location = new System.Drawing.Point(409, 142);
             this.cmd6.Name = "cmd6";
             this.cmd6.Size = new System.Drawing.Size(59, 58);
             this.cmd6.TabIndex = 5;
@@ -150,7 +153,7 @@
             // cmd7
             // 
             this.cmd7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmd7.Location = new System.Drawing.Point(299, 169);
+            this.cmd7.Location = new System.Drawing.Point(298, 197);
             this.cmd7.Name = "cmd7";
             this.cmd7.Size = new System.Drawing.Size(59, 58);
             this.cmd7.TabIndex = 6;
@@ -161,7 +164,7 @@
             // cmd8
             // 
             this.cmd8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmd8.Location = new System.Drawing.Point(354, 169);
+            this.cmd8.Location = new System.Drawing.Point(353, 197);
             this.cmd8.Name = "cmd8";
             this.cmd8.Size = new System.Drawing.Size(59, 58);
             this.cmd8.TabIndex = 7;
@@ -172,7 +175,7 @@
             // cmd9
             // 
             this.cmd9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmd9.Location = new System.Drawing.Point(410, 169);
+            this.cmd9.Location = new System.Drawing.Point(409, 197);
             this.cmd9.Name = "cmd9";
             this.cmd9.Size = new System.Drawing.Size(59, 58);
             this.cmd9.TabIndex = 8;
@@ -185,7 +188,7 @@
             this.lblResult.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.lblResult.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblResult.Location = new System.Drawing.Point(149, 29);
+            this.lblResult.Location = new System.Drawing.Point(148, 57);
             this.lblResult.Name = "lblResult";
             this.lblResult.Size = new System.Drawing.Size(329, 27);
             this.lblResult.TabIndex = 9;
@@ -195,7 +198,7 @@
             // cmdPlus
             // 
             this.cmdPlus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmdPlus.Location = new System.Drawing.Point(499, 59);
+            this.cmdPlus.Location = new System.Drawing.Point(498, 87);
             this.cmdPlus.Name = "cmdPlus";
             this.cmdPlus.Size = new System.Drawing.Size(59, 58);
             this.cmdPlus.TabIndex = 10;
@@ -206,7 +209,7 @@
             // cmdMinus
             // 
             this.cmdMinus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmdMinus.Location = new System.Drawing.Point(499, 114);
+            this.cmdMinus.Location = new System.Drawing.Point(498, 142);
             this.cmdMinus.Name = "cmdMinus";
             this.cmdMinus.Size = new System.Drawing.Size(59, 58);
             this.cmdMinus.TabIndex = 11;
@@ -217,7 +220,7 @@
             // cmdMultiiply
             // 
             this.cmdMultiiply.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmdMultiiply.Location = new System.Drawing.Point(499, 169);
+            this.cmdMultiiply.Location = new System.Drawing.Point(498, 197);
             this.cmdMultiiply.Name = "cmdMultiiply";
             this.cmdMultiiply.Size = new System.Drawing.Size(59, 58);
             this.cmdMultiiply.TabIndex = 12;
@@ -228,7 +231,7 @@
             // cmdDivide
             // 
             this.cmdDivide.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmdDivide.Location = new System.Drawing.Point(499, 223);
+            this.cmdDivide.Location = new System.Drawing.Point(498, 251);
             this.cmdDivide.Name = "cmdDivide";
             this.cmdDivide.Size = new System.Drawing.Size(59, 58);
             this.cmdDivide.TabIndex = 13;
@@ -241,7 +244,7 @@
             this.lblPower.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.lblPower.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.lblPower.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblPower.Location = new System.Drawing.Point(473, 28);
+            this.lblPower.Location = new System.Drawing.Point(472, 56);
             this.lblPower.Name = "lblPower";
             this.lblPower.Size = new System.Drawing.Size(85, 28);
             this.lblPower.TabIndex = 14;
@@ -252,7 +255,7 @@
             this.lblPreviousCalc.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.lblPreviousCalc.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.lblPreviousCalc.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblPreviousCalc.Location = new System.Drawing.Point(149, 2);
+            this.lblPreviousCalc.Location = new System.Drawing.Point(148, 30);
             this.lblPreviousCalc.Name = "lblPreviousCalc";
             this.lblPreviousCalc.Size = new System.Drawing.Size(409, 27);
             this.lblPreviousCalc.TabIndex = 15;
@@ -266,7 +269,7 @@
             this.specialCommandsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(570, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(565, 24);
             this.menuStrip1.TabIndex = 16;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -377,7 +380,7 @@
             // sin1ToolStripMenuItem
             // 
             this.sin1ToolStripMenuItem.Name = "sin1ToolStripMenuItem";
-            this.sin1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sin1ToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.sin1ToolStripMenuItem.Tag = "special";
             this.sin1ToolStripMenuItem.Text = "Asin(";
             this.sin1ToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemSpecial_Click);
@@ -385,7 +388,7 @@
             // cos1ToolStripMenuItem
             // 
             this.cos1ToolStripMenuItem.Name = "cos1ToolStripMenuItem";
-            this.cos1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cos1ToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.cos1ToolStripMenuItem.Tag = "special";
             this.cos1ToolStripMenuItem.Text = "Acos(";
             this.cos1ToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemSpecial_Click);
@@ -393,7 +396,7 @@
             // cotToolStripMenuItem
             // 
             this.cotToolStripMenuItem.Name = "cotToolStripMenuItem";
-            this.cotToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cotToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.cotToolStripMenuItem.Tag = "special";
             this.cotToolStripMenuItem.Text = "Atan(";
             this.cotToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemSpecial_Click);
@@ -401,7 +404,7 @@
             // cmd0
             // 
             this.cmd0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmd0.Location = new System.Drawing.Point(299, 223);
+            this.cmd0.Location = new System.Drawing.Point(298, 251);
             this.cmd0.Name = "cmd0";
             this.cmd0.Size = new System.Drawing.Size(59, 58);
             this.cmd0.TabIndex = 17;
@@ -412,7 +415,7 @@
             // cmdEqual
             // 
             this.cmdEqual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmdEqual.Location = new System.Drawing.Point(410, 223);
+            this.cmdEqual.Location = new System.Drawing.Point(409, 251);
             this.cmdEqual.Name = "cmdEqual";
             this.cmdEqual.Size = new System.Drawing.Size(59, 58);
             this.cmdEqual.TabIndex = 19;
@@ -423,7 +426,7 @@
             // cmdSave
             // 
             this.cmdSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmdSave.Location = new System.Drawing.Point(69, 223);
+            this.cmdSave.Location = new System.Drawing.Point(68, 251);
             this.cmdSave.Name = "cmdSave";
             this.cmdSave.Size = new System.Drawing.Size(63, 58);
             this.cmdSave.TabIndex = 20;
@@ -434,7 +437,7 @@
             // cmdTan
             // 
             this.cmdTan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmdTan.Location = new System.Drawing.Point(12, 169);
+            this.cmdTan.Location = new System.Drawing.Point(11, 197);
             this.cmdTan.Name = "cmdTan";
             this.cmdTan.Size = new System.Drawing.Size(59, 58);
             this.cmdTan.TabIndex = 23;
@@ -446,7 +449,7 @@
             // cmdCos
             // 
             this.cmdCos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmdCos.Location = new System.Drawing.Point(12, 114);
+            this.cmdCos.Location = new System.Drawing.Point(11, 142);
             this.cmdCos.Name = "cmdCos";
             this.cmdCos.Size = new System.Drawing.Size(59, 58);
             this.cmdCos.TabIndex = 24;
@@ -458,7 +461,7 @@
             // cmdSin
             // 
             this.cmdSin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmdSin.Location = new System.Drawing.Point(12, 60);
+            this.cmdSin.Location = new System.Drawing.Point(11, 88);
             this.cmdSin.Name = "cmdSin";
             this.cmdSin.Size = new System.Drawing.Size(59, 58);
             this.cmdSin.TabIndex = 25;
@@ -470,7 +473,7 @@
             // cmdParenthesisOpen
             // 
             this.cmdParenthesisOpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmdParenthesisOpen.Location = new System.Drawing.Point(149, 169);
+            this.cmdParenthesisOpen.Location = new System.Drawing.Point(148, 197);
             this.cmdParenthesisOpen.Name = "cmdParenthesisOpen";
             this.cmdParenthesisOpen.Size = new System.Drawing.Size(59, 58);
             this.cmdParenthesisOpen.TabIndex = 26;
@@ -481,7 +484,7 @@
             // cmdParenthesisClose
             // 
             this.cmdParenthesisClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmdParenthesisClose.Location = new System.Drawing.Point(205, 169);
+            this.cmdParenthesisClose.Location = new System.Drawing.Point(204, 197);
             this.cmdParenthesisClose.Name = "cmdParenthesisClose";
             this.cmdParenthesisClose.Size = new System.Drawing.Size(58, 58);
             this.cmdParenthesisClose.TabIndex = 27;
@@ -492,7 +495,7 @@
             // cmdMemory
             // 
             this.cmdMemory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmdMemory.Location = new System.Drawing.Point(12, 223);
+            this.cmdMemory.Location = new System.Drawing.Point(11, 251);
             this.cmdMemory.Name = "cmdMemory";
             this.cmdMemory.Size = new System.Drawing.Size(59, 58);
             this.cmdMemory.TabIndex = 28;
@@ -503,7 +506,7 @@
             // cmdClear
             // 
             this.cmdClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmdClear.Location = new System.Drawing.Point(149, 60);
+            this.cmdClear.Location = new System.Drawing.Point(148, 88);
             this.cmdClear.Name = "cmdClear";
             this.cmdClear.Size = new System.Drawing.Size(114, 57);
             this.cmdClear.TabIndex = 29;
@@ -514,7 +517,7 @@
             // cmdClearAll
             // 
             this.cmdClearAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmdClearAll.Location = new System.Drawing.Point(149, 114);
+            this.cmdClearAll.Location = new System.Drawing.Point(148, 142);
             this.cmdClearAll.Name = "cmdClearAll";
             this.cmdClearAll.Size = new System.Drawing.Size(114, 58);
             this.cmdClearAll.TabIndex = 30;
@@ -525,7 +528,7 @@
             // cmdPower
             // 
             this.cmdPower.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmdPower.Location = new System.Drawing.Point(69, 60);
+            this.cmdPower.Location = new System.Drawing.Point(68, 88);
             this.cmdPower.Name = "cmdPower";
             this.cmdPower.Size = new System.Drawing.Size(63, 57);
             this.cmdPower.TabIndex = 31;
@@ -537,7 +540,7 @@
             // cmdComma
             // 
             this.cmdComma.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmdComma.Location = new System.Drawing.Point(354, 223);
+            this.cmdComma.Location = new System.Drawing.Point(148, 251);
             this.cmdComma.Name = "cmdComma";
             this.cmdComma.Size = new System.Drawing.Size(59, 58);
             this.cmdComma.TabIndex = 32;
@@ -548,7 +551,7 @@
             // cmdSquareRoot
             // 
             this.cmdSquareRoot.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmdSquareRoot.Location = new System.Drawing.Point(69, 114);
+            this.cmdSquareRoot.Location = new System.Drawing.Point(68, 142);
             this.cmdSquareRoot.Name = "cmdSquareRoot";
             this.cmdSquareRoot.Size = new System.Drawing.Size(63, 58);
             this.cmdSquareRoot.TabIndex = 33;
@@ -560,7 +563,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button1.Location = new System.Drawing.Point(69, 169);
+            this.button1.Location = new System.Drawing.Point(68, 197);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(63, 58);
             this.button1.TabIndex = 34;
@@ -572,18 +575,54 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 284);
+            this.label1.Location = new System.Drawing.Point(8, 312);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(549, 13);
             this.label1.TabIndex = 35;
             this.label1.Text = "Copyright Joan Maillard 2015. If you have any suggestions or questions, contact m" +
     "e on joanjoanjostorm@gmail.com";
             // 
+            // cmdQuitApplication
+            // 
+            this.cmdQuitApplication.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.cmdQuitApplication.Location = new System.Drawing.Point(519, -4);
+            this.cmdQuitApplication.Name = "cmdQuitApplication";
+            this.cmdQuitApplication.Size = new System.Drawing.Size(46, 28);
+            this.cmdQuitApplication.TabIndex = 37;
+            this.cmdQuitApplication.Text = "X";
+            this.cmdQuitApplication.UseVisualStyleBackColor = true;
+            this.cmdQuitApplication.Click += new System.EventHandler(this.cmdQuitApplication_Click);
+            // 
+            // cmdMinimize
+            // 
+            this.cmdMinimize.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.cmdMinimize.Location = new System.Drawing.Point(477, -4);
+            this.cmdMinimize.Name = "cmdMinimize";
+            this.cmdMinimize.Size = new System.Drawing.Size(46, 28);
+            this.cmdMinimize.TabIndex = 38;
+            this.cmdMinimize.Text = "-";
+            this.cmdMinimize.UseVisualStyleBackColor = true;
+            this.cmdMinimize.Click += new System.EventHandler(this.cmdMinimize_Click);
+            // 
+            // cmdPoint
+            // 
+            this.cmdPoint.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmdPoint.Location = new System.Drawing.Point(353, 251);
+            this.cmdPoint.Name = "cmdPoint";
+            this.cmdPoint.Size = new System.Drawing.Size(59, 58);
+            this.cmdPoint.TabIndex = 39;
+            this.cmdPoint.Text = ".";
+            this.cmdPoint.UseVisualStyleBackColor = true;
+            this.cmdPoint.Click += new System.EventHandler(this.button_click);
+            // 
             // Calculatorr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(570, 305);
+            this.ClientSize = new System.Drawing.Size(565, 329);
+            this.Controls.Add(this.cmdPoint);
+            this.Controls.Add(this.cmdMinimize);
+            this.Controls.Add(this.cmdQuitApplication);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cmdSquareRoot);
@@ -617,7 +656,7 @@
             this.Controls.Add(this.cmd2);
             this.Controls.Add(this.cmd1);
             this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "Calculatorr";
@@ -688,6 +727,9 @@
         private System.Windows.Forms.Button cmdSquareRoot;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button cmdQuitApplication;
+        private System.Windows.Forms.Button cmdMinimize;
+        private System.Windows.Forms.Button cmdPoint;
     }
 }
 

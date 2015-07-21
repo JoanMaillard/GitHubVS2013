@@ -16,9 +16,9 @@ namespace WindowsFormsApplication1
 {
     public partial class Calculatorr : Form
     {
-        Boolean calculated = false;
-        String CorrectedString = String.Empty;
-          
+        Boolean calculated = false; // situational bool used in a display funtion, which is to know whether or not clear the input field or not
+        String CorrectedString = String.Empty; // calculable string
+        
 
         public Calculatorr()
         {
@@ -27,7 +27,7 @@ namespace WindowsFormsApplication1
         // Function called at startup. Just says hello in this case.
         private void Calculatorr_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("Hello, thanks for using my crappy beta calculator instead of your OS's :D");
+            MessageBox.Show("Hello, thanks for using my crappy beta calculator instead of the basic Windows'! :D");
         }
         // When any number or operation is pressed
         private void button_click(object sender, EventArgs e)
@@ -81,32 +81,30 @@ namespace WindowsFormsApplication1
         // Operations when "=" is pressed
         private void cmdEqual_click(object sender, EventArgs e)
         {
-            foreach (char c in lblResult.Text)
+            foreach (char c in lblResult.Text) // prepares the calculable string, adding some precisions and correcting the commas into dots.
             {
                 if (c == '+' || c == '-' || c == '*' || c == '/')
                     CorrectedString = CorrectedString + c + "(double)";
-                else if (c == ',')
-                    CorrectedString = CorrectedString + '.';
                 else
                     CorrectedString = CorrectedString + c;
             }
-            lblResult.Text = (DoStupideCalc(CorrectedString).ToString());
-            CorrectedString = String.Empty;
-            calculated = true;
+            lblResult.Text = getridofcommas(DoStupideCalc(CorrectedString).ToString()); //launching the calculation procedure
+            CorrectedString = String.Empty; // emptying the calculable string so it's ready for the next calculus
+            calculated = true; 
         }
-       // Repeating the previous functions on the labels for the 3 special calculus in the additional list 
+        // Repeating the previous functions on the labels for the 3 special calculus in the additional list 
         private void ToolStripMenuItemSpecial_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem clickedMenu = (ToolStripMenuItem)sender;
             SpecButton_click(clickedMenu.Text);
         }
-        private void cmdClear_click(object sender, EventArgs e)
+        private void cmdClear_click(object sender, EventArgs e) // Clears the user input.
         {
             lblResult.Text = "0";
             CorrectedString = String.Empty;
         }
 
-        private void cmdClearAll_click(object sender, EventArgs e)
+        private void cmdClearAll_click(object sender, EventArgs e) //Get the calculator back to startup state.
         {
             lblResult.Text = "0";
             lblPreviousCalc.Text = String.Empty;
@@ -117,7 +115,6 @@ namespace WindowsFormsApplication1
         {
             if (lblResult.Text == "0")
             lblResult.Text = String.Empty;
-           
         }
 
         public double DoStupideCalc(string stupidFormula)
@@ -168,6 +165,7 @@ namespace WindowsFormsApplication1
         public string GetStupideCalcSourceCode(string stupidFormula)
         {
             string sourceCode;
+            string yolo = String.Empty;
 
             sourceCode = @"
                     using System;
@@ -180,11 +178,37 @@ namespace WindowsFormsApplication1
                                     return " + stupidFormula + @";
                                 }
                         }
-                    }"; 
-
+                    }";
             return sourceCode;
 
+
         }
+        private string getridofcommas(string iHaveNoIdeaHowToNameYou)
+        {
+            string yolo = String.Empty;
+            foreach (char c in iHaveNoIdeaHowToNameYou)
+            {
+                if (c == ',')
+                    yolo = yolo + '.';
+                else
+                    yolo = yolo + c;
+            }
+
+            return yolo;
+        }
+
+// Displays a goodbye message and closes the application.
+        private void cmdQuitApplication_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Thanks for using, feel free to send feedback to joanjoanjostorm@gmail.com :D");
+            Application.Exit();
+        }
+// Minimizes the application.
+        private void cmdMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
     }
 }
 
