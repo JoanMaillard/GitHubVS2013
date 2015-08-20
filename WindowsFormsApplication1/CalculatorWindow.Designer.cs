@@ -73,7 +73,6 @@
             this.cmdMemory = new System.Windows.Forms.Button();
             this.cmdClear = new System.Windows.Forms.Button();
             this.cmdClearAll = new System.Windows.Forms.Button();
-            this.cmdPower = new System.Windows.Forms.Button();
             this.cmdComma = new System.Windows.Forms.Button();
             this.cmdSquareRoot = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -81,6 +80,8 @@
             this.cmdQuitApplication = new System.Windows.Forms.Button();
             this.cmdMinimize = new System.Windows.Forms.Button();
             this.cmdPoint = new System.Windows.Forms.Button();
+            this.cmdPi = new System.Windows.Forms.Button();
+            this.cmdPowerTestbutton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -525,18 +526,6 @@
             this.cmdClearAll.UseVisualStyleBackColor = true;
             this.cmdClearAll.Click += new System.EventHandler(this.cmdClearAll_click);
             // 
-            // cmdPower
-            // 
-            this.cmdPower.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmdPower.Location = new System.Drawing.Point(68, 88);
-            this.cmdPower.Name = "cmdPower";
-            this.cmdPower.Size = new System.Drawing.Size(63, 57);
-            this.cmdPower.TabIndex = 31;
-            this.cmdPower.Tag = "Special";
-            this.cmdPower.Text = "Pow(";
-            this.cmdPower.UseVisualStyleBackColor = true;
-            this.cmdPower.Click += new System.EventHandler(this.button_click);
-            // 
             // cmdComma
             // 
             this.cmdComma.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -567,8 +556,8 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(63, 58);
             this.button1.TabIndex = 34;
-            this.button1.Tag = "Special";
-            this.button1.Text = "Log(";
+            this.button1.Tag = "Specia";
+            this.button1.Text = "L";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button_click);
             // 
@@ -615,11 +604,35 @@
             this.cmdPoint.UseVisualStyleBackColor = true;
             this.cmdPoint.Click += new System.EventHandler(this.button_click);
             // 
+            // cmdPi
+            // 
+            this.cmdPi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmdPi.Location = new System.Drawing.Point(204, 251);
+            this.cmdPi.Name = "cmdPi";
+            this.cmdPi.Size = new System.Drawing.Size(59, 58);
+            this.cmdPi.TabIndex = 40;
+            this.cmdPi.Tag = "Specia";
+            this.cmdPi.Text = "PI";
+            this.cmdPi.UseVisualStyleBackColor = true;
+            this.cmdPi.Click += new System.EventHandler(this.button_click);
+            // 
+            // cmdPowerTestbutton
+            // 
+            this.cmdPowerTestbutton.Location = new System.Drawing.Point(68, 88);
+            this.cmdPowerTestbutton.Name = "cmdPowerTestbutton";
+            this.cmdPowerTestbutton.Size = new System.Drawing.Size(63, 58);
+            this.cmdPowerTestbutton.TabIndex = 41;
+            this.cmdPowerTestbutton.Text = "^";
+            this.cmdPowerTestbutton.UseVisualStyleBackColor = true;
+            this.cmdPowerTestbutton.Click += new System.EventHandler(this.button_click);
+            // 
             // Calculatorr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 329);
+            this.Controls.Add(this.cmdPowerTestbutton);
+            this.Controls.Add(this.cmdPi);
             this.Controls.Add(this.cmdPoint);
             this.Controls.Add(this.cmdMinimize);
             this.Controls.Add(this.cmdQuitApplication);
@@ -627,7 +640,6 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cmdSquareRoot);
             this.Controls.Add(this.cmdComma);
-            this.Controls.Add(this.cmdPower);
             this.Controls.Add(this.cmdClearAll);
             this.Controls.Add(this.cmdClear);
             this.Controls.Add(this.cmdMemory);
@@ -722,7 +734,6 @@
         private System.Windows.Forms.Button cmdMemory;
         private System.Windows.Forms.Button cmdClear;
         private System.Windows.Forms.Button cmdClearAll;
-        private System.Windows.Forms.Button cmdPower;
         private System.Windows.Forms.Button cmdComma;
         private System.Windows.Forms.Button cmdSquareRoot;
         private System.Windows.Forms.Button button1;
@@ -730,6 +741,8 @@
         private System.Windows.Forms.Button cmdQuitApplication;
         private System.Windows.Forms.Button cmdMinimize;
         private System.Windows.Forms.Button cmdPoint;
+        private System.Windows.Forms.Button cmdPi;
+        private System.Windows.Forms.Button cmdPowerTestbutton;
     }
 }
 
