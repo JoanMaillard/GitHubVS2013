@@ -442,7 +442,7 @@
             this.cmdTan.Name = "cmdTan";
             this.cmdTan.Size = new System.Drawing.Size(59, 58);
             this.cmdTan.TabIndex = 23;
-            this.cmdTan.Tag = "Special";
+            this.cmdTan.Tag = "Specia";
             this.cmdTan.Text = "Tan(";
             this.cmdTan.UseVisualStyleBackColor = true;
             this.cmdTan.Click += new System.EventHandler(this.button_click);
@@ -454,7 +454,7 @@
             this.cmdCos.Name = "cmdCos";
             this.cmdCos.Size = new System.Drawing.Size(59, 58);
             this.cmdCos.TabIndex = 24;
-            this.cmdCos.Tag = "Special";
+            this.cmdCos.Tag = "Specia";
             this.cmdCos.Text = "Cos(";
             this.cmdCos.UseVisualStyleBackColor = true;
             this.cmdCos.Click += new System.EventHandler(this.button_click);
@@ -466,7 +466,7 @@
             this.cmdSin.Name = "cmdSin";
             this.cmdSin.Size = new System.Drawing.Size(59, 58);
             this.cmdSin.TabIndex = 25;
-            this.cmdSin.Tag = "Special";
+            this.cmdSin.Tag = "Specia";
             this.cmdSin.Text = "Sin(";
             this.cmdSin.UseVisualStyleBackColor = true;
             this.cmdSin.Click += new System.EventHandler(this.button_click);

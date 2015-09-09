@@ -17,15 +17,16 @@ namespace WindowsFormsApplication1
     public partial class Calculatorr : Form
     {
         Boolean calculated = false; // situational bool used in a display funtion, which is to know whether or not clear the input field or not
-        Boolean periodPressed = false;
-        Boolean antiOperatorPeriod = false;
-        Boolean num1OrNum2 = false;
-        Boolean inPower = false;
-        String Selector = String.Empty;
-        String CorrectedString = String.Empty; // calculable string
-        String PeriodTester = ".";
-        String num1, num2 = String.Empty;
-        String NumberTester = "1234567890";
+        Boolean OperatorPressed = false; // used to avoid double operators
+        Boolean periodPressed = false; // The name says it all.
+        Boolean antiOperatorPeriod = false; // Needed to avoid having an operator, and then directly a period behind it.
+        Boolean num1OrNum2 = false; // Needed to swap the two modes for the power function
+        Boolean inPower = false; // Needed to know where to put num1 and num2 (see further)
+        String Selector = String.Empty; // Needed to know what function we're talking about
+        String CorrectedString = String.Empty; // Calculable string
+        String PeriodTester = "."; // Needed for a ".Contains" function
+        String num1, num2 = String.Empty; //numbers used for special funtions  
+        String NumberTester = "1234567890"; // Needed for a ".Contains" function
         
         public Calculatorr()
         {
@@ -41,38 +42,16 @@ namespace WindowsFormsApplication1
         {
             Button pressedButton = (Button)sender; // Declaration of the "pressedButton" object
         // Generic function for the number and signs to be displayed when clicked
-            if (pressedButton.Tag == "Special")
-                SpecButton_click(pressedButton.Text);
-            else
+                
                 Processor(pressedButton.Text);
         }
-        private void SpecButton_click(String SpecButtonText)
-        {
-            Double PI = Math.PI;
-            String TypeTester = "Pow(Log(0";
-            String SpecialTypeTester = "Sin(Cos(Tan(Sqrt(Asin(Acos(Atan(";
-            if (calculated == true && TypeTester.Contains(SpecButtonText))
-            {
-                lblPreviousCalc.Text = lblResult.Text;
-                lblResult.Text = String.Empty;
-            }
-            calculated = false;
-            if (lblResult.Text == "" || lblResult.Text == "0")
-                lblResult.Text = "Math." + SpecButtonText;
-            else if (SpecialTypeTester.Contains(SpecButtonText))
-                lblResult.Text = "Math." + SpecButtonText + lblResult.Text + ")";
-            else if (SpecButtonText == "PI")
-                lblResult.Text = lblResult.Text + getridofcommas(PI.ToString());
-            else
-                lblResult.Text = "Math." + SpecButtonText + lblResult.Text;
-            
-
-        }
+       
         private void Processor(String ButtonText) // String = type of variant wanted; ButtonText: name of the variant 
         {
 
 
-            String OperatorTester = "+-*/";
+            String OperatorTester = "+-*/^";
+          
             if (calculated == true && NumberTester.Contains(ButtonText))
             {
                 lblPreviousCalc.Text = lblResult.Text;
@@ -82,10 +61,9 @@ namespace WindowsFormsApplication1
             //Notation "0.xx" for numbers below 1, instead of ".xx"
             if (lblResult.Text == "0")
                 if (ButtonText != "." && ButtonText != "+" && ButtonText != "-" && ButtonText != "*" && ButtonText != "/")
-                    lblResult.Text = "";
+                    lblResult.Text = String.Empty;
             if (PeriodTester.Contains(ButtonText) && periodPressed == false && antiOperatorPeriod == false)
             {
-
                 lblResult.Text = lblResult.Text + ButtonText;
                 periodPressed = true;
             }
@@ -93,15 +71,18 @@ namespace WindowsFormsApplication1
             {
                 lblResult.Text = lblResult.Text + ButtonText;
                 antiOperatorPeriod = false;
+                OperatorPressed = false;
             }
-            else if (OperatorTester.Contains(ButtonText) && antiOperatorPeriod == false)
+            else if (OperatorTester.Contains(ButtonText) &&  antiOperatorPeriod == false && OperatorPressed == false)
             {
                 lblResult.Text = lblResult.Text + ButtonText;
                 periodPressed = false;
                 antiOperatorPeriod = true;
+                OperatorPressed = true;
             }
             else
                 lblResult.Text = lblResult.Text + ButtonText;
+           
             }
         private void memButton_click(object sender, EventArgs e)
         {
@@ -119,12 +100,15 @@ namespace WindowsFormsApplication1
             lblResult.Text = "0";
             CorrectedString = String.Empty;
             calculated = false;
+            periodPressed = false; 
+            antiOperatorPeriod = false; 
         }
         // Operations when "=" is pressed
         private void cmdEqual_click(object sender, EventArgs e)
         {
-            lblResult.Text = lblResult.Text + " ";
-            foreach (char c in lblResult.Text) // prepares the calculable string, adding some precisions and correcting the commas into dots.
+            int equationInPower = 0;
+            lblResult.Text = lblResult.Text + " "; // Ending char used to know where the end of the calculus is.
+            foreach (char c in lblResult.Text) // prepares the calculable string, adding some precisions.
             {
                 if (c == '^')
                 {
@@ -132,16 +116,19 @@ namespace WindowsFormsApplication1
                     num1OrNum2 = true;
                     inPower = true;
                 }
-                if (c == 'P')
-                    CorrectedString = CorrectedString + "Math.PI";
-                if (NumberTester.Contains(c) || PeriodTester.Contains(c))
+                 if (inPower == true && c == '(')
+                    equationInPower++;
+                 if (inPower == true && c == ')')
+                    equationInPower--;
+                    
+                 if (NumberTester.Contains(c) || PeriodTester.Contains(c) || c == '(' || c == ')')
                 {
-                    if (!num1OrNum2)
+                    if (num1OrNum2 == false)
                         num1 = num1 + c;
                     else
                         num2 = num2 + c;
                 }
-                if (inPower == false)
+                 if (inPower == false)
                 {
                     if (c == '+' || c == '-' || c == '*' || c == '/')
                     {
@@ -154,15 +141,22 @@ namespace WindowsFormsApplication1
                         num1 = String.Empty;
                     }
                 }
-                else
+                 if (inPower == true)
                 {
                     if (c == '+' || c == '-' || c == '*' || c == '/')
-                    { 
-                        inPower = false;
-                        CorrectedString = CorrectedString + "Math.Pow(" + num1 + ", " + num2 + ")" + c + "(double)";
-                        num1 = String.Empty;
-                        num2 = String.Empty;
-                        num1OrNum2 = false;
+                    {
+                        if (equationInPower == 0)
+                        {
+                            inPower = false;
+                            CorrectedString = CorrectedString + "Math." + Selector + "(" + num1 + ", " + num2 + ")" + c + "(double)";
+                            num1 = String.Empty;
+                            num2 = String.Empty;
+                            num1OrNum2 = false;
+                        }
+                        else 
+                        {
+                            num2 = num2 + c + "(double)";
+                        }
                     }
                     else if (c == ' ')
                     {
@@ -172,9 +166,7 @@ namespace WindowsFormsApplication1
                         num2 = String.Empty;
                         num1OrNum2 = false;
                     }
-
                 }
-
             }
             lblResult.Text = getridofcommas(DoStupideCalc(CorrectedString).ToString()); //launching the calculation procedure
             CorrectedString = String.Empty; // emptying the calculable string so it's ready for the next calculus
@@ -187,7 +179,7 @@ namespace WindowsFormsApplication1
         private void ToolStripMenuItemSpecial_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem clickedMenu = (ToolStripMenuItem)sender;
-            SpecButton_click(clickedMenu.Text);
+           Processor(clickedMenu.Text);
         }
         private void cmdClear_click(object sender, EventArgs e) // Clears the user input.
         {
@@ -271,7 +263,7 @@ namespace WindowsFormsApplication1
         }
         private string getridofcommas(string iHaveNoIdeaHowToNameYou)
         {
-            string yolo = String.Empty;
+            String yolo = String.Empty;
             foreach (char c in iHaveNoIdeaHowToNameYou)
             {
                 if (c == ',')
