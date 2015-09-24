@@ -10,7 +10,6 @@ using System.Threading;
 using System.Windows.Forms;
 using Microsoft.CSharp;
 using System.CodeDom.Compiler;
-using System.Text.RegularExpressions;
 
 namespace WindowsFormsApplication1
 {
@@ -50,7 +49,7 @@ namespace WindowsFormsApplication1
         {
 
 
-            String OperatorTester = "+-*/^";
+            String OperatorTester = "+-*/^Log";
           
             if (calculated == true && NumberTester.Contains(ButtonText))
             {
@@ -66,24 +65,29 @@ namespace WindowsFormsApplication1
             {
                 lblResult.Text = lblResult.Text + ButtonText;
                 periodPressed = true;
+                antiOperatorPeriod = true;
             }
-            else if (NumberTester.Contains(ButtonText))
+            else if (NumberTester.Contains(ButtonText) || ButtonText == "(" || ButtonText == ")" || ButtonText == "PI" || ButtonText == "e")
             {
                 lblResult.Text = lblResult.Text + ButtonText;
                 antiOperatorPeriod = false;
                 OperatorPressed = false;
             }
-            else if (OperatorTester.Contains(ButtonText) &&  antiOperatorPeriod == false && OperatorPressed == false)
+            else if (OperatorTester.Contains(ButtonText) && antiOperatorPeriod == false && OperatorPressed == false)
             {
                 lblResult.Text = lblResult.Text + ButtonText;
                 periodPressed = false;
                 antiOperatorPeriod = true;
                 OperatorPressed = true;
             }
-            else
-                lblResult.Text = lblResult.Text + ButtonText;
-           
+            else if (ButtonText == "Sin(" || ButtonText == "Cos(" || ButtonText == "Tan(" || ButtonText == "Sqrt(")
+            {
+                if (lblResult.Text != "0" && lblResult.Text != "")
+                  lblResult.Text = ButtonText + lblResult.Text; 
+                else
+                    lblResult.Text = ButtonText;           
             }
+        }
         private void memButton_click(object sender, EventArgs e)
         {
             if (lblPreviousCalc.Text != "")
@@ -115,6 +119,54 @@ namespace WindowsFormsApplication1
                     Selector = "Pow";
                     num1OrNum2 = true;
                     inPower = true;
+                }
+                if (c == 'L')
+                {
+                    Selector = "Log";
+                    num1OrNum2 = true;
+                    inPower = true;
+                }
+                if (c == 'i')
+                {
+                    if (num1OrNum2 == false)
+                        num1 = "Math.Sin";
+                    else
+                        num2 = "Math.Sin";
+                }
+                if (c == 'C')
+                {
+                    if (num1OrNum2 == false)
+                        num1 = "Math.Cos";
+                    else
+                        num2 = "Math.Cos";
+                }
+                if (c == 'T')
+                {
+                    if (num1OrNum2 == false)
+                        num1 = "Math.Tan";
+                    else
+                        num2 = "Math.Tan";
+                }
+                if (c == 'P')
+                {
+                    if (num1OrNum2 == false)
+                        num1 = num1 + "Math.PI";
+                    else
+                        num2 = num2 + "Math.PI";
+                }
+                if (c == 'q')
+                {
+                    if (num1OrNum2 == false)
+                        num1 = "Math.Sqrt";
+                    else
+                        num2 = "Math.Sqrt";
+                }
+                if (c == 'e')
+                {
+                    if (num1OrNum2 == false)
+                        num1 = num1 + "Math.E";
+                    else
+                        num2 = num2 + "Math.E"; 
                 }
                  if (inPower == true && c == '(')
                     equationInPower++;
@@ -148,7 +200,14 @@ namespace WindowsFormsApplication1
                         if (equationInPower == 0)
                         {
                             inPower = false;
-                            CorrectedString = CorrectedString + "Math." + Selector + "(" + num1 + ", " + num2 + ")" + c + "(double)";
+                            if (Selector == "Pow")
+                            {
+                                CorrectedString = CorrectedString + "Math." + Selector + "(" + num1 + ", " + num2 + ")" + c + "(double)";
+                            }
+                            else
+                            {
+                                CorrectedString = CorrectedString + "Math." + Selector + "(" + num2 + ", " + num1 + ")" + c + "(double)";
+                            }
                             num1 = String.Empty;
                             num2 = String.Empty;
                             num1OrNum2 = false;
@@ -161,7 +220,14 @@ namespace WindowsFormsApplication1
                     else if (c == ' ')
                     {
                         inPower = false;
-                        CorrectedString = CorrectedString + "Math." + Selector + "(" + num1 + ", " + num2 + ")";
+                        if (Selector == "Pow")
+                            {
+                                CorrectedString = CorrectedString + "Math." + Selector + "(" + num1 + ", " + num2 + ")";
+                            }
+                            else
+                            {
+                                CorrectedString = CorrectedString + "Math." + Selector + "(" + num2 + ", " + num1 + ")";
+                            }
                         num1 = String.Empty;
                         num2 = String.Empty;
                         num1OrNum2 = false;
@@ -285,6 +351,16 @@ namespace WindowsFormsApplication1
         private void cmdMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void back_click(object sender, EventArgs e)
+        {
+            if (lblResult.Text.Length >= 1)
+            {
+                lblResult.Text = lblResult.Text.Remove(lblResult.Text.Length - 1);
+                antiOperatorPeriod = false;
+                OperatorPressed = false;
+            }
         }
 
     }

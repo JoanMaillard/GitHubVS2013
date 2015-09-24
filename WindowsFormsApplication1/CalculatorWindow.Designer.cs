@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Calculatorr));
             this.cmd1 = new System.Windows.Forms.Button();
             this.cmd2 = new System.Windows.Forms.Button();
             this.cmd3 = new System.Windows.Forms.Button();
@@ -44,24 +45,6 @@
             this.cmdDivide = new System.Windows.Forms.Button();
             this.lblPower = new System.Windows.Forms.Label();
             this.lblPreviousCalc = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuModeScientific = new System.Windows.Forms.ToolStripMenuItem();
-            this.normalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.converterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.decimalBinaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.decimalHexadecimalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.binaryDecimalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hexadecimalDecimalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.writingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.scientificToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.engineerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.decimalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.specialCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sin1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cos1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmd0 = new System.Windows.Forms.Button();
             this.cmdEqual = new System.Windows.Forms.Button();
             this.cmdSave = new System.Windows.Forms.Button();
@@ -73,7 +56,6 @@
             this.cmdMemory = new System.Windows.Forms.Button();
             this.cmdClear = new System.Windows.Forms.Button();
             this.cmdClearAll = new System.Windows.Forms.Button();
-            this.cmdComma = new System.Windows.Forms.Button();
             this.cmdSquareRoot = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -82,7 +64,8 @@
             this.cmdPoint = new System.Windows.Forms.Button();
             this.cmdPi = new System.Windows.Forms.Button();
             this.cmdPowerTestbutton = new System.Windows.Forms.Button();
-            this.menuStrip1.SuspendLayout();
+            this.cmdComma = new System.Windows.Forms.Button();
+            this.cmdE = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmd1
@@ -263,145 +246,6 @@
             this.lblPreviousCalc.Text = "0";
             this.lblPreviousCalc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.optionsToolStripMenuItem,
-            this.specialCommandsToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(565, 24);
-            this.menuStrip1.TabIndex = 16;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // optionsToolStripMenuItem
-            // 
-            this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.modeToolStripMenuItem,
-            this.writingToolStripMenuItem});
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.optionsToolStripMenuItem.Text = "&Options";
-            // 
-            // modeToolStripMenuItem
-            // 
-            this.modeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuModeScientific,
-            this.normalToolStripMenuItem,
-            this.converterToolStripMenuItem});
-            this.modeToolStripMenuItem.Name = "modeToolStripMenuItem";
-            this.modeToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
-            this.modeToolStripMenuItem.Text = "&Mode";
-            // 
-            // mnuModeScientific
-            // 
-            this.mnuModeScientific.Name = "mnuModeScientific";
-            this.mnuModeScientific.Size = new System.Drawing.Size(126, 22);
-            this.mnuModeScientific.Text = "&Scientific";
-            // 
-            // normalToolStripMenuItem
-            // 
-            this.normalToolStripMenuItem.Name = "normalToolStripMenuItem";
-            this.normalToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.normalToolStripMenuItem.Text = "&Normal";
-            // 
-            // converterToolStripMenuItem
-            // 
-            this.converterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.decimalBinaryToolStripMenuItem,
-            this.decimalHexadecimalToolStripMenuItem,
-            this.binaryDecimalToolStripMenuItem,
-            this.hexadecimalDecimalToolStripMenuItem});
-            this.converterToolStripMenuItem.Name = "converterToolStripMenuItem";
-            this.converterToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.converterToolStripMenuItem.Text = "Converter";
-            // 
-            // decimalBinaryToolStripMenuItem
-            // 
-            this.decimalBinaryToolStripMenuItem.Name = "decimalBinaryToolStripMenuItem";
-            this.decimalBinaryToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.decimalBinaryToolStripMenuItem.Text = "Decimal -> Binary";
-            // 
-            // decimalHexadecimalToolStripMenuItem
-            // 
-            this.decimalHexadecimalToolStripMenuItem.Name = "decimalHexadecimalToolStripMenuItem";
-            this.decimalHexadecimalToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.decimalHexadecimalToolStripMenuItem.Text = "Decimal -> Hexadecimal";
-            // 
-            // binaryDecimalToolStripMenuItem
-            // 
-            this.binaryDecimalToolStripMenuItem.Name = "binaryDecimalToolStripMenuItem";
-            this.binaryDecimalToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.binaryDecimalToolStripMenuItem.Text = "Binary -> Decimal";
-            // 
-            // hexadecimalDecimalToolStripMenuItem
-            // 
-            this.hexadecimalDecimalToolStripMenuItem.Name = "hexadecimalDecimalToolStripMenuItem";
-            this.hexadecimalDecimalToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.hexadecimalDecimalToolStripMenuItem.Text = "Hexadecimal -> Decimal";
-            // 
-            // writingToolStripMenuItem
-            // 
-            this.writingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.scientificToolStripMenuItem1,
-            this.engineerToolStripMenuItem,
-            this.decimalToolStripMenuItem});
-            this.writingToolStripMenuItem.Name = "writingToolStripMenuItem";
-            this.writingToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
-            this.writingToolStripMenuItem.Text = "Writing";
-            // 
-            // scientificToolStripMenuItem1
-            // 
-            this.scientificToolStripMenuItem1.Name = "scientificToolStripMenuItem1";
-            this.scientificToolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
-            this.scientificToolStripMenuItem1.Text = "Scientific";
-            // 
-            // engineerToolStripMenuItem
-            // 
-            this.engineerToolStripMenuItem.Name = "engineerToolStripMenuItem";
-            this.engineerToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.engineerToolStripMenuItem.Text = "Engineer";
-            // 
-            // decimalToolStripMenuItem
-            // 
-            this.decimalToolStripMenuItem.Name = "decimalToolStripMenuItem";
-            this.decimalToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.decimalToolStripMenuItem.Text = "Decimal";
-            // 
-            // specialCommandsToolStripMenuItem
-            // 
-            this.specialCommandsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sin1ToolStripMenuItem,
-            this.cos1ToolStripMenuItem,
-            this.cotToolStripMenuItem});
-            this.specialCommandsToolStripMenuItem.Name = "specialCommandsToolStripMenuItem";
-            this.specialCommandsToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
-            this.specialCommandsToolStripMenuItem.Text = "&Special calcs";
-            // 
-            // sin1ToolStripMenuItem
-            // 
-            this.sin1ToolStripMenuItem.Name = "sin1ToolStripMenuItem";
-            this.sin1ToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
-            this.sin1ToolStripMenuItem.Tag = "special";
-            this.sin1ToolStripMenuItem.Text = "Asin(";
-            this.sin1ToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemSpecial_Click);
-            // 
-            // cos1ToolStripMenuItem
-            // 
-            this.cos1ToolStripMenuItem.Name = "cos1ToolStripMenuItem";
-            this.cos1ToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
-            this.cos1ToolStripMenuItem.Tag = "special";
-            this.cos1ToolStripMenuItem.Text = "Acos(";
-            this.cos1ToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemSpecial_Click);
-            // 
-            // cotToolStripMenuItem
-            // 
-            this.cotToolStripMenuItem.Name = "cotToolStripMenuItem";
-            this.cotToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
-            this.cotToolStripMenuItem.Tag = "special";
-            this.cotToolStripMenuItem.Text = "Atan(";
-            this.cotToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemSpecial_Click);
-            // 
             // cmd0
             // 
             this.cmd0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -526,17 +370,6 @@
             this.cmdClearAll.UseVisualStyleBackColor = true;
             this.cmdClearAll.Click += new System.EventHandler(this.cmdClearAll_click);
             // 
-            // cmdComma
-            // 
-            this.cmdComma.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cmdComma.Location = new System.Drawing.Point(148, 251);
-            this.cmdComma.Name = "cmdComma";
-            this.cmdComma.Size = new System.Drawing.Size(59, 58);
-            this.cmdComma.TabIndex = 32;
-            this.cmdComma.Text = ",";
-            this.cmdComma.UseVisualStyleBackColor = true;
-            this.cmdComma.Click += new System.EventHandler(this.button_click);
-            // 
             // cmdSquareRoot
             // 
             this.cmdSquareRoot.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -557,7 +390,7 @@
             this.button1.Size = new System.Drawing.Size(63, 58);
             this.button1.TabIndex = 34;
             this.button1.Tag = "Specia";
-            this.button1.Text = "L";
+            this.button1.Text = "Log";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button_click);
             // 
@@ -618,6 +451,7 @@
             // 
             // cmdPowerTestbutton
             // 
+            this.cmdPowerTestbutton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdPowerTestbutton.Location = new System.Drawing.Point(68, 88);
             this.cmdPowerTestbutton.Name = "cmdPowerTestbutton";
             this.cmdPowerTestbutton.Size = new System.Drawing.Size(63, 58);
@@ -626,11 +460,34 @@
             this.cmdPowerTestbutton.UseVisualStyleBackColor = true;
             this.cmdPowerTestbutton.Click += new System.EventHandler(this.button_click);
             // 
+            // cmdComma
+            // 
+            this.cmdComma.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmdComma.Location = new System.Drawing.Point(148, 251);
+            this.cmdComma.Name = "cmdComma";
+            this.cmdComma.Size = new System.Drawing.Size(59, 58);
+            this.cmdComma.TabIndex = 32;
+            this.cmdComma.Text = "Back";
+            this.cmdComma.UseVisualStyleBackColor = true;
+            this.cmdComma.Click += new System.EventHandler(this.back_click);
+            // 
+            // cmdE
+            // 
+            this.cmdE.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmdE.Location = new System.Drawing.Point(68, 30);
+            this.cmdE.Name = "cmdE";
+            this.cmdE.Size = new System.Drawing.Size(63, 54);
+            this.cmdE.TabIndex = 43;
+            this.cmdE.Text = "e";
+            this.cmdE.UseVisualStyleBackColor = true;
+            this.cmdE.Click += new System.EventHandler(this.button_click);
+            // 
             // Calculatorr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 329);
+            this.Controls.Add(this.cmdE);
             this.Controls.Add(this.cmdPowerTestbutton);
             this.Controls.Add(this.cmdPi);
             this.Controls.Add(this.cmdPoint);
@@ -667,16 +524,13 @@
             this.Controls.Add(this.cmd3);
             this.Controls.Add(this.cmd2);
             this.Controls.Add(this.cmd1);
-            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MainMenuStrip = this.menuStrip1;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Calculatorr";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculatorr";
             this.Load += new System.EventHandler(this.Calculatorr_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -705,20 +559,6 @@
         private System.Windows.Forms.Button cmdDivide;
         private System.Windows.Forms.Label lblPower;
         private System.Windows.Forms.Label lblPreviousCalc;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem modeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mnuModeScientific;
-        private System.Windows.Forms.ToolStripMenuItem normalToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem converterToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem writingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem scientificToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem engineerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem decimalToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem decimalBinaryToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem decimalHexadecimalToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem binaryDecimalToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem hexadecimalDecimalToolStripMenuItem;
         private System.Windows.Forms.Button cmd0;
         private System.Windows.Forms.Button cmdEqual;
         private System.Windows.Forms.Button cmdSave;
@@ -727,14 +567,9 @@
         private System.Windows.Forms.Button cmdSin;
         private System.Windows.Forms.Button cmdParenthesisOpen;
         private System.Windows.Forms.Button cmdParenthesisClose;
-        private System.Windows.Forms.ToolStripMenuItem specialCommandsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sin1ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cos1ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cotToolStripMenuItem;
         private System.Windows.Forms.Button cmdMemory;
         private System.Windows.Forms.Button cmdClear;
         private System.Windows.Forms.Button cmdClearAll;
-        private System.Windows.Forms.Button cmdComma;
         private System.Windows.Forms.Button cmdSquareRoot;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
@@ -743,6 +578,8 @@
         private System.Windows.Forms.Button cmdPoint;
         private System.Windows.Forms.Button cmdPi;
         private System.Windows.Forms.Button cmdPowerTestbutton;
+        private System.Windows.Forms.Button cmdComma;
+        private System.Windows.Forms.Button cmdE;
     }
 }
 
